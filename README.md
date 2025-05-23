@@ -287,6 +287,11 @@ After starting the Docker Compose stack, you can run a smoke test script to veri
 
     You should see the chat interface.
 
+#### Special Commands
+
+*   **Fetch MCP Test Data**: If you type `show mcp test data` into the chat, the application will attempt to connect to the configured MCP (Multi-Component Protocol) test server and display its `/test_data` endpoint content. This is useful for testing the MCP integration.
+    *   This feature relies on the `MCP_SERVER_URL` and `MCP_TEST_TOKEN` environment variables. Ensure these are set in your `.env` file (or Docker Compose environment) as detailed in `env.example` and the "Configure Environment Variables" section.
+
 
 ### 2. Run the Bulk Test Script
 
