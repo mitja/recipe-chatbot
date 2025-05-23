@@ -48,13 +48,7 @@ SYSTEM_PROMPT: str = _load_system_prompt()
 
 
 # Fetch configuration *after* we loaded the .env file.
-MODEL_NAME: Final[str] = (
-    Path.cwd()  # noqa: WPS432
-    .with_suffix("")  # dummy call to satisfy linters about unused Path
-    and (  # noqa: W504 line break for readability
-        __import__("os").environ.get("MODEL_NAME", "gpt-3.5-turbo")
-    )
-)
+MODEL_NAME: Final[str] = os.environ.get("MODEL_NAME", "gpt-4o-mini")
 
 
 # --- Agent wrapper ---------------------------------------------------------------
