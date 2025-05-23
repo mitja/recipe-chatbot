@@ -6,6 +6,7 @@ This module centralises the system prompt, environment loading, and the
 wrapper around litellm so the rest of the application stays decluttered.
 """
 
+import os
 from pathlib import Path
 from typing import Final, List, Dict
 
@@ -17,12 +18,34 @@ load_dotenv(override=False)
 
 # --- Constants -------------------------------------------------------------------
 
-SYSTEM_PROMPT: Final[str] = (
+_DEFAULT_SYSTEM_PROMPT: str = (
     "You are an expert chef recommending delicious and useful recipes. "
     "Present only one recipe at a time. If the user doesn't specify what ingredients "
-    "they have available, ask them about their available ingredients rather than "
-    "assuming what's in their fridge."
+    "they have available, assume only basic ingredients are available."
+    "Be descriptive in the steps of the recipe, so it is easy to follow."
+    "Have variety in your recipes, don't just recommend the same thing over and over."
 )
+
+def _load_system_prompt() -> str:
+    """Loads system prompt from SYSTEM_PROMPT_PATH or uses default."""
+    custom_prompt_path_str = os.environ.get("SYSTEM_PROMPT_PATH")
+    if custom_prompt_path_str:
+        try:
+            # Assuming SYSTEM_PROMPT_PATH is relative to the project root
+            project_root = Path.cwd()
+            custom_prompt_file = project_root / custom_prompt_path_str
+            if custom_prompt_file.exists() and custom_prompt_file.is_file():
+                return custom_prompt_file.read_text().strip()
+            else:
+                # Optionally, log a warning if path is set but file not found
+                print(f"Warning: SYSTEM_PROMPT_PATH ('{custom_prompt_path_str}') set, but file not found or not a file. Falling back to default prompt.")
+        except Exception as e:
+            # Optionally, log the error
+            print(f"Warning: Error loading system prompt from '{custom_prompt_path_str}': {e}. Falling back to default prompt.")
+    return _DEFAULT_SYSTEM_PROMPT
+
+SYSTEM_PROMPT: str = _load_system_prompt()
+
 
 # Fetch configuration *after* we loaded the .env file.
 MODEL_NAME: Final[str] = (
