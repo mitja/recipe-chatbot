@@ -153,6 +153,69 @@ uv run python -m mcp.test_client
 uv run python -m unittest discover -s tests -p 'test_*.py'
 ```
 
+## Running with Docker Compose
+
+This project is configured to run with Docker Compose, allowing for an isolated and consistent environment for the main application and the MCP test server.
+
+### Prerequisites
+
+*   **Docker Desktop** (or Docker Engine + Docker Compose CLI) installed. You can download Docker Desktop from [docker.com](https://www.docker.com/products/docker-desktop/).
+
+### Build and Start Services
+
+To build the Docker images and start the services, navigate to the project root directory and run:
+
+```bash
+docker-compose up --build
+```
+
+For detached mode (to run in the background), use:
+```bash
+docker-compose up --build -d
+```
+
+### Accessing Services
+
+Once the services are running:
+
+*   **Main Application (Recipe Chatbot)**: Accessible at [http://localhost:8000](http://localhost:8000)
+*   **MCP Test Server**: Accessible at [http://localhost:8001](http://localhost:8001)
+    *   The test server expects a Bearer token for authentication. The token is defined in `mcp/test_server.py` (currently `test_token_123`).
+
+### Viewing Logs
+
+To view the logs from the running services:
+
+```bash
+# View logs for all services
+docker-compose logs -f
+
+# View logs for a specific service (e.g., app or mcp_server)
+docker-compose logs -f app
+docker-compose logs -f mcp_server
+```
+
+### Stopping Services
+
+To stop and remove the containers, networks, and volumes created by `docker-compose up`:
+
+```bash
+docker-compose down
+```
+
+To stop services without removing them (so they can be restarted quickly):
+```bash
+docker-compose stop
+```
+
+### Running Tests with Docker Compose (Optional Example)
+
+If you need to run unit tests within the Docker environment of the `app` service:
+```bash
+docker-compose exec app uv run python -m unittest discover -s tests -p 'test_*.py'
+```
+This command executes the test discovery inside the `app` container.
+
 ## Running the Provided Application
 
 ### 1. Run the Web Application (Frontend and Backend)

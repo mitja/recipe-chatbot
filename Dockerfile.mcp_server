@@ -1,0 +1,26 @@
+# Use an official Python runtime as a parent image
+FROM python:3.11-slim
+
+# Install uv
+RUN pip install uv
+
+# Set the working directory in the container
+WORKDIR /app
+
+# Copy the requirements file into the container at /app
+# Assuming the MCP server uses the same requirements.txt.
+# If it has its own or a subset, this might be adjusted.
+COPY requirements.txt .
+
+# Install any needed packages specified in requirements.txt using uv
+RUN uv pip install --system -r requirements.txt --no-cache
+
+# Copy the mcp directory into the container at /app/mcp
+# This contains the test server and any related foundation code it might import.
+COPY mcp/ ./mcp
+
+# Make port 8001 available to the world outside this container
+EXPOSE 8001
+
+# Run the MCP test server when the container launches
+CMD ["uvicorn", "mcp.test_server:app", "--host", "0.0.0.0", "--port", "8001"]

@@ -1,7 +1,7 @@
 from mcp.foundation import MCPConnection
 from requests.exceptions import HTTPError
 
-SERVER_URL = "http://127.0.0.1:8000"
+SERVER_URL = "http://127.0.0.1:8001"
 VALID_TOKEN = "test_token_123"  # Same as TEST_TOKEN in test_server.py
 INVALID_TOKEN = "wrong_token"
 

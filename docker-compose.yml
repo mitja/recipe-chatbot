@@ -1,0 +1,38 @@
+version: '3.8'
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8000:8000"
+    environment:
+      # Example: If your app uses environment variables from a .env file,
+      # you might list them here or use 'env_file'
+      # For now, setting a specific one needed by the recipe chatbot.
+      - SYSTEM_PROMPT_PATH=prompts/systemprompt-001.md
+      # Add other necessary environment variables for the main app if any
+      # - MODEL_NAME=${MODEL_NAME} # Example, if you manage API keys/models via .env
+    volumes:
+      # Mounts the current directory into /app in the container.
+      # This is useful for development so code changes are reflected without rebuilding.
+      - .:/app
+    networks:
+      - app_network
+
+  mcp_server:
+    build:
+      context: .
+      dockerfile: Dockerfile.mcp_server
+    ports:
+      - "8001:8001"
+    volumes:
+      # Mounts the mcp directory for development convenience.
+      - ./mcp:/app/mcp
+    networks:
+      - app_network
+
+networks:
+  app_network:
+    driver: bridge
