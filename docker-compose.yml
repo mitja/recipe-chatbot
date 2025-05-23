@@ -15,6 +15,8 @@ services:
       # MCP Server configuration for the app service
       - MCP_SERVER_URL=http://mcp_server:8001 # For Docker internal network
       - MCP_TEST_TOKEN=test_token_123
+      # Database configuration for the app service
+      - DATABASE_URL=sqlite:////app/app_data.db # For Docker, assuming WORKDIR is /app
       # Add other necessary environment variables for the main app if any
       # - MODEL_NAME=${MODEL_NAME} # Example, if you manage API keys/models via .env
     volumes:

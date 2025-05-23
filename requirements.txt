@@ -1,9 +1,11 @@
 fastapi
 uvicorn[standard]
 litellm
-python-dotenv
+python-dotenv~=1.0.0
 httpx
 rich
 pandas
 requests
 pydantic
+SQLAlchemy~=2.0.0
+Alembic~=1.13.0
