@@ -17,12 +17,12 @@ load_dotenv(override=False)
 
 # --- Constants -------------------------------------------------------------------
 
-SYSTEM_PROMPT: Final[str] = (
-    "You are an expert chef recommending delicious and useful recipes. "
-    "Present only one recipe at a time. If the user doesn't specify what ingredients "
-    "they have available, ask them about their available ingredients rather than "
-    "assuming what's in their fridge."
+# Construct the path to the prompt file relative to the current file.
+# utils.py is in backend/, prompts/ is at the root.
+_PROMPT_FILE_PATH: Final[Path] = (
+    Path(__file__).resolve().parent.parent / "prompts" / "systemprompt-001.md"
 )
+SYSTEM_PROMPT: Final[str] = _PROMPT_FILE_PATH.read_text()
 
 # Fetch configuration *after* we loaded the .env file.
 MODEL_NAME: Final[str] = (
