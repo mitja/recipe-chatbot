@@ -50,6 +50,36 @@ recipe-chatbot/
 └── README.md           # This file (Your guide!)
 ```
 
+## Using Makefile
+
+A `Makefile` is provided to simplify common development tasks. Here are some of the available targets:
+
+*   **`make install`**:
+    Installs all necessary project dependencies from `requirements.txt` and `requirements-dev.txt` (if present) using `uv pip install`.
+
+*   **`make run-app`**:
+    Starts the main Recipe Chatbot application. It will be available at `http://127.0.0.1:8000`. The server will auto-reload on code changes.
+
+*   **`make run-mcp-server`**:
+    Starts the MCP (Multi-Component Protocol) test server. It will be available at `http://127.0.0.1:8001`. This server will also auto-reload on code changes.
+
+*   **`make run-dev-servers`**:
+    Provides instructions to run both `make run-app` and `make run-mcp-server` in separate terminals for a complete development environment.
+
+*   **`make test`**:
+    Runs all unit tests located in the `tests/` directory.
+
+*   **`make smoke-test`**:
+    Runs the smoke test script (`scripts/smoke_test.py`). Make sure you have started the development servers (e.g., by following `make run-dev-servers` instructions) before running this.
+
+*   **`make clean`**:
+    Removes Python bytecode files (`.pyc`, `.pyo`) and `__pycache__` directories from the project.
+
+*   **`make help`**:
+    Displays a list of all available targets and their descriptions.
+
+To use a target, simply run `make <target-name>` from the project root directory (e.g., `make install`).
+
 ## Setup Instructions
 
 1.  **Clone the Repository (if you haven't already)**
@@ -215,6 +245,34 @@ If you need to run unit tests within the Docker environment of the `app` service
 docker-compose exec app uv run python -m unittest discover -s tests -p 'test_*.py'
 ```
 This command executes the test discovery inside the `app` container.
+
+### Running the Smoke Test
+
+After starting the Docker Compose stack, you can run a smoke test script to verify that both the main application and the MCP test server are reachable and responding correctly.
+
+1.  **Ensure the Docker Compose stack is running**:
+    Make sure services are up, preferably in detached mode:
+    ```bash
+    docker-compose up --build -d
+    ```
+    Allow a few moments for the services to initialize, especially on the first run. The smoke test script has built-in retries, but services should ideally be stable.
+
+2.  **Run the smoke test script**:
+    Execute the script from the project root:
+    ```bash
+    python scripts/smoke_test.py
+    ```
+    Or, using `uv` if your environment is set up with it:
+    ```bash
+    uv run python scripts/smoke_test.py
+    ```
+    The script will output the status of its checks and exit with code 0 if all tests pass, or 1 if any test fails.
+
+3.  **(Optional) Bring down the stack**:
+    After testing, you can bring down the services:
+    ```bash
+    docker-compose down
+    ```
 
 ## Running the Provided Application
 
