@@ -287,10 +287,22 @@ After starting the Docker Compose stack, you can run a smoke test script to veri
 
     You should see the chat interface.
 
-#### Special Commands
+#### Managing Family Data (via Function Calling)
 
-*   **Fetch MCP Test Data**: If you type `show mcp test data` into the chat, the application will attempt to connect to the configured MCP (Multi-Component Protocol) test server and display its `/test_data` endpoint content. This is useful for testing the MCP integration.
-    *   This feature relies on the `MCP_SERVER_URL` and `MCP_TEST_TOKEN` environment variables. Ensure these are set in your `.env` file (or Docker Compose environment) as detailed in `env.example` and the "Configure Environment Variables" section.
+The chatbot can now understand requests related to managing family information and will use backend tools to interact with a database. This is achieved through an LLM function-calling mechanism.
+
+You can try prompts like:
+
+*   "Please create a family named The Jetsons with the slug 'jetsons'."
+*   "Can you add a member named George to the family 'jetsons'? His age is 40 and he is male." 
+    *   (You can also specify height, weight, and target caloric intake: e.g., "height 175 cm, weight 70 kg, target calories 2200")
+*   "Show me a summary of members in the 'jetsons' family."
+
+The chatbot will use tools to perform these actions and then confirm the outcome or provide the requested information. This demonstrates a more advanced interaction where the LLM can leverage structured data operations.
+
+**Note**: For these features to work:
+*   The database must be initialized (e.g., `make install` followed by Alembic migrations if you set up the DB manually, or `docker-compose up` which uses a pre-configured DB in its volume).
+*   The `DATABASE_URL` environment variable must be correctly configured for the backend to connect to the database.
 
 
 ### 2. Run the Bulk Test Script
