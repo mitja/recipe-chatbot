@@ -106,6 +106,53 @@ recipe-chatbot/
 
         Please refer to the official LiteLLM documentation for the correct model prefixes and required environment variables for your chosen provider: [LiteLLM Supported Providers](https://docs.litellm.ai/docs/providers).
 
+## Development Setup with `uv`
+
+`uv` is an extremely fast Python package installer and resolver, written in Rust. It can be used as a drop-in replacement for `pip` and `venv`.
+
+**Installation**: To install `uv`, please refer to the official installation guide: [https://astral.sh/docs/uv/installation](https://astral.sh/docs/uv/installation)
+
+**Creating a Virtual Environment**:
+```bash
+# Create a virtual environment in a .venv directory
+uv venv
+```
+
+**Activating the Virtual Environment**:
+*   On macOS and Linux:
+    ```bash
+    source .venv/bin/activate
+    ```
+*   On Windows (Command Prompt):
+    ```bash
+    .venv\Scripts\activate.bat
+    ```
+*   On Windows (PowerShell):
+    ```bash
+    .venv\Scripts\Activate.ps1
+    ```
+
+**Installing Dependencies**:
+```bash
+# Install main dependencies
+uv pip install -r requirements.txt
+# Install development dependencies (including uv itself for consistency if desired, or other dev tools)
+uv pip install -r requirements-dev.txt
+```
+
+**(Optional) Running the Application/Scripts with `uv`**:
+You can also use `uv run` to execute scripts or applications within the managed environment without explicitly activating it:
+```bash
+# Example: Run the test MCP server (from project root)
+uv run uvicorn mcp.test_server:app --reload --port 8000
+
+# Example: Run the test MCP client (from project root)
+uv run python -m mcp.test_client
+
+# Example: Run unit tests (from project root)
+uv run python -m unittest discover -s tests -p 'test_*.py'
+```
+
 ## Running the Provided Application
 
 ### 1. Run the Web Application (Frontend and Backend)

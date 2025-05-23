@@ -1,7 +1,9 @@
 fastapi
-uvicorn
+uvicorn[standard]
 litellm
 python-dotenv
 httpx
 rich
 pandas
+requests
+pydantic
