@@ -7,14 +7,14 @@ app = FastAPI()
 
 TEST_TOKEN = "test_token_123"
 
-security = HTTPBearer()
+security = HTTPBearer(auto_error=False) # Allow manual handling of missing token
 
 class TestDataModel(BaseModel):
     some_value: str
 
-async def verify_token(credentials: HTTPAuthorizationCredentials = Depends(security)):
+async def verify_token(credentials: Optional[HTTPAuthorizationCredentials] = Depends(security)): # Made credentials Optional
     """Dependency to verify the authentication token."""
-    if not credentials:
+    if credentials is None: # Check if token is missing
         raise HTTPException(
             status_code=status.HTTP_401_UNAUTHORIZED,
             detail="Not authenticated",
