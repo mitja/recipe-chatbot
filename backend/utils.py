@@ -11,10 +11,14 @@ from pathlib import Path
 from typing import Final, List, Dict
 
 import litellm  # type: ignore
+import json # For parsing function arguments from LLM
 from dotenv import load_dotenv
 
-from mcp.foundation import MCPConnection # Added
-from requests.exceptions import HTTPError # Added
+from mcp.foundation import MCPConnection
+from requests.exceptions import HTTPError
+from backend.tool_definitions import TOOL_DEFINITIONS
+from backend.tool_executor import execute_tool # Added
+from database.database_config import get_db # Added
 
 # Ensure the .env file is loaded as early as possible.
 load_dotenv(override=False)
@@ -23,6 +27,7 @@ load_dotenv(override=False)
 
 _DEFAULT_SYSTEM_PROMPT: str = (
     "You are an expert chef recommending delicious and useful recipes. "
+    "You can also help manage family information and shopping lists using available tools when appropriate. " # Added this sentence
     "Present only one recipe at a time. If the user doesn't specify what ingredients "
     "they have available, assume only basic ingredients are available."
     "Be descriptive in the steps of the recipe, so it is easy to follow."
@@ -69,55 +74,93 @@ def get_agent_response(messages: List[Dict[str, str]]) -> List[Dict[str, str]]: 
     List[Dict[str, str]]
         The updated conversation history, including the assistant's new reply.
     """
-
-    # Make a mutable copy for potential modification with MCP data
-    provisional_messages = list(messages) 
+    # --- Start of new function calling logic ---
     
-    # Check for MCP trigger phrase in the last user message
-    if provisional_messages and provisional_messages[-1]["role"] == "user":
-        user_message_content = provisional_messages[-1]["content"].lower().strip()
-        if user_message_content == "show mcp test data":
-            mcp_url = os.environ.get("MCP_SERVER_URL")
-            mcp_token = os.environ.get("MCP_TEST_TOKEN")
-            mcp_info_content = None # To store the content of the MCP system message
+    # Make a mutable copy of the incoming messages
+    current_conversation_history = list(messages)
 
-            if not mcp_url or not mcp_token:
-                mcp_info_content = "MCP_CONFIG_ERROR: MCP_SERVER_URL or MCP_TEST_TOKEN is not configured."
-            else:
-                try:
-                    # print(f"Attempting to connect to MCP server at {mcp_url} for /test_data") # Debug
-                    mcp_connection = MCPConnection(server_url=mcp_url, token=mcp_token)
-                    data = mcp_connection.get_data("test_data")
-                    mcp_info_content = f"MCP_DATA_FETCHED: Successfully retrieved /test_data. Content: {data}"
-                except HTTPError as e:
-                    mcp_info_content = f"MCP_DATA_ERROR: Failed to retrieve /test_data. Status: {e.response.status_code}, Response: {e.response.text}"
-                except Exception as e: # Catch other potential errors like ConnectionError
-                    mcp_info_content = f"MCP_DATA_ERROR: Failed to retrieve /test_data. Error: {str(e)}"
-            
-            if mcp_info_content:
-                # Add the MCP info as a system message. It will be part of the input to the LLM.
-                provisional_messages.append({"role": "system", "content": mcp_info_content})
+    # Ensure SYSTEM_PROMPT is at the beginning of the conversation if not already there
+    if not current_conversation_history or current_conversation_history[0].get("role") != "system":
+        current_conversation_history.insert(0, {"role": "system", "content": SYSTEM_PROMPT})
+    elif current_conversation_history[0].get("role") == "system" and current_conversation_history[0].get("content") != SYSTEM_PROMPT:
+        # If a system prompt is present but it's not our main one,
+        # we might replace it or prepend ours. For now, let's assume if a system prompt
+        # is there, it's either ours or one from a previous tool interaction that should be kept.
+        # If the first message is a system message, we'll assume it's either the main one
+        # or a tool-related one. If it's not the main one, this means the main one might be missing
+        # if this is the start of a turn after tool use.
+        # A simpler approach: always ensure the *first* message for the *first* LLM call in a turn is the main system prompt.
+        # The provided logic below handles this: if current_conversation_history[0] is not system, it inserts.
+        # If it IS system, it's assumed to be handled (either it's the main one, or it's a tool system message that should be there).
+        # This seems fine for now, as the main system prompt guides overall behavior.
+        pass
 
-    # Now, prepare current_messages using provisional_messages for LiteLLM
-    # This ensures SYSTEM_PROMPT is correctly placed if not already present.
-    current_messages: List[Dict[str, str]]
-    if not provisional_messages or provisional_messages[0]["role"] != "system":
-        current_messages = [{"role": "system", "content": SYSTEM_PROMPT}] + provisional_messages
-    else:
-        # If provisional_messages already starts with a system prompt, assume it's the main one.
-        current_messages = provisional_messages
+    # --- First LLM Call ---
+    print(f"Debug: Sending to LiteLLM (1st call): {current_conversation_history}") # Debug
+    print(f"Debug: Using tools: {TOOL_DEFINITIONS}") # Debug
 
-    # litellm is model-agnostic; we only need to supply the model name and key.
     completion = litellm.completion(
         model=MODEL_NAME,
-        messages=current_messages, # Pass the (potentially modified) full history
-    )
-
-    assistant_reply_content: str = (
-        completion["choices"][0]["message"]["content"]  # type: ignore[index]
-        .strip()
+        messages=current_conversation_history,
+        tools=TOOL_DEFINITIONS,
+        tool_choice="auto"  # Let the LLM decide if it wants to use a tool
     )
     
-    # Append assistant's response to the history that was sent to LLM
-    updated_messages = current_messages + [{"role": "assistant", "content": assistant_reply_content}]
-    return updated_messages 
+    print(f"Debug: LiteLLM response (1st call): {completion}") # Debug
+
+    # Get the first choice from the completion
+    llm_response_message = completion.choices[0].message
+
+    # Append the LLM's initial response (which might be a tool call request or a direct answer)
+    current_conversation_history.append(llm_response_message.model_dump()) # Append as dict
+
+    # --- Check for Tool Calls ---
+    if llm_response_message.tool_calls:
+        print(f"Debug: LLM requested tool calls: {llm_response_message.tool_calls}") # Debug
+        
+        db_session = next(get_db()) # Obtain a database session
+        try:
+            for tool_call in llm_response_message.tool_calls:
+                function_name = tool_call.function.name
+                try:
+                    function_args = json.loads(tool_call.function.arguments)
+                except json.JSONDecodeError:
+                    print(f"Error: Could not decode JSON arguments for tool {function_name}: {tool_call.function.arguments}") # Debug
+                    tool_result_content = f"Error: Invalid JSON arguments provided for {function_name}."
+                    # Potentially log the error and invalid arguments string
+                else:
+                    print(f"Debug: Executing tool '{function_name}' with args: {function_args}") # Debug
+                    tool_result_content = execute_tool(
+                        tool_name=function_name,
+                        tool_args=function_args,
+                        db=db_session
+                    )
+                
+                print(f"Debug: Tool '{function_name}' result: {tool_result_content}") # Debug
+                current_conversation_history.append({
+                    "role": "tool",
+                    "tool_call_id": tool_call.id,
+                    "name": function_name,
+                    "content": str(tool_result_content) # Ensure content is a string
+                })
+        finally:
+            db_session.close()
+
+        # --- Second LLM Call (after processing tool calls) ---
+        print(f"Debug: Sending to LiteLLM (2nd call): {current_conversation_history}") # Debug
+        
+        # The SYSTEM_PROMPT should already be at the start from the first call's preparation.
+        # We don't pass `tools` or `tool_choice` here, as we expect a direct natural language response.
+        final_completion = litellm.completion(
+            model=MODEL_NAME,
+            messages=current_conversation_history
+        )
+        print(f"Debug: LiteLLM response (2nd call): {final_completion}") # Debug
+        
+        final_llm_response_message = final_completion.choices[0].message
+        current_conversation_history.append(final_llm_response_message.model_dump())
+    
+    # If no tool_calls, the llm_response_message from the first call is the final one.
+    # The current_conversation_history already has it appended.
+    
+    return current_conversation_history # Return the full, updated conversation history
