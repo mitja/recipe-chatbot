@@ -13,6 +13,9 @@ from typing import Final, List, Dict
 import litellm  # type: ignore
 from dotenv import load_dotenv
 
+from mcp.foundation import MCPConnection # Added
+from requests.exceptions import HTTPError # Added
+
 # Ensure the .env file is loaded as early as possible.
 load_dotenv(override=False)
 
@@ -67,18 +70,47 @@ def get_agent_response(messages: List[Dict[str, str]]) -> List[Dict[str, str]]: 
         The updated conversation history, including the assistant's new reply.
     """
 
-    # litellm is model-agnostic; we only need to supply the model name and key.
-    # The first message is assumed to be the system prompt if not explicitly provided
-    # or if the history is empty. We'll ensure the system prompt is always first.
-    current_messages: List[Dict[str, str]]
-    if not messages or messages[0]["role"] != "system":
-        current_messages = [{"role": "system", "content": SYSTEM_PROMPT}] + messages
-    else:
-        current_messages = messages
+    # Make a mutable copy for potential modification with MCP data
+    provisional_messages = list(messages) 
+    
+    # Check for MCP trigger phrase in the last user message
+    if provisional_messages and provisional_messages[-1]["role"] == "user":
+        user_message_content = provisional_messages[-1]["content"].lower().strip()
+        if user_message_content == "show mcp test data":
+            mcp_url = os.environ.get("MCP_SERVER_URL")
+            mcp_token = os.environ.get("MCP_TEST_TOKEN")
+            mcp_info_content = None # To store the content of the MCP system message
 
+            if not mcp_url or not mcp_token:
+                mcp_info_content = "MCP_CONFIG_ERROR: MCP_SERVER_URL or MCP_TEST_TOKEN is not configured."
+            else:
+                try:
+                    # print(f"Attempting to connect to MCP server at {mcp_url} for /test_data") # Debug
+                    mcp_connection = MCPConnection(server_url=mcp_url, token=mcp_token)
+                    data = mcp_connection.get_data("test_data")
+                    mcp_info_content = f"MCP_DATA_FETCHED: Successfully retrieved /test_data. Content: {data}"
+                except HTTPError as e:
+                    mcp_info_content = f"MCP_DATA_ERROR: Failed to retrieve /test_data. Status: {e.response.status_code}, Response: {e.response.text}"
+                except Exception as e: # Catch other potential errors like ConnectionError
+                    mcp_info_content = f"MCP_DATA_ERROR: Failed to retrieve /test_data. Error: {str(e)}"
+            
+            if mcp_info_content:
+                # Add the MCP info as a system message. It will be part of the input to the LLM.
+                provisional_messages.append({"role": "system", "content": mcp_info_content})
+
+    # Now, prepare current_messages using provisional_messages for LiteLLM
+    # This ensures SYSTEM_PROMPT is correctly placed if not already present.
+    current_messages: List[Dict[str, str]]
+    if not provisional_messages or provisional_messages[0]["role"] != "system":
+        current_messages = [{"role": "system", "content": SYSTEM_PROMPT}] + provisional_messages
+    else:
+        # If provisional_messages already starts with a system prompt, assume it's the main one.
+        current_messages = provisional_messages
+
+    # litellm is model-agnostic; we only need to supply the model name and key.
     completion = litellm.completion(
         model=MODEL_NAME,
-        messages=current_messages, # Pass the full history
+        messages=current_messages, # Pass the (potentially modified) full history
     )
 
     assistant_reply_content: str = (
@@ -86,6 +118,6 @@ def get_agent_response(messages: List[Dict[str, str]]) -> List[Dict[str, str]]: 
         .strip()
     )
     
-    # Append assistant's response to the history
+    # Append assistant's response to the history that was sent to LLM
     updated_messages = current_messages + [{"role": "assistant", "content": assistant_reply_content}]
     return updated_messages 

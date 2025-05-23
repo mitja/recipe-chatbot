@@ -1,0 +1,148 @@
+# Git
+.git
+.gitignore
+.gitattributes
+
+# Docker specific files (to avoid including them in the build context if they are not needed inside the image itself)
+Dockerfile
+Dockerfile.*
+docker-compose.yml
+docker-compose.*.yml
+.dockerignore
+
+# Python virtual environment
+.venv
+venv/
+env/
+ENV/
+env.bak/
+venv.bak/
+__pypackages__/
+
+# Python bytecode and cache
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+develop-eggs/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+share/python-wheels/
+*.egg
+MANIFEST
+.installed.cfg
+
+# OS-specific
+.DS_Store
+Thumbs.db
+
+# IDE and editor directories/files
+.idea/
+.vscode/
+*.swp
+*.swo
+.spyderproject
+.spyproject
+.ropeproject
+
+# Log files
+*.log
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Databases
+*.db
+*.sqlite3
+db.sqlite3-journal
+
+# Requirements files (copied explicitly, other root files might not be needed)
+requirements*.txt
+# Pipenv/Poetry/PDM lock files (uv uses requirements.txt in our Dockerfiles)
+Pipfile.lock
+poetry.lock
+pdm.lock
+uv.lock
+.pdm.toml
+.pdm-python
+.pdm-build/
+
+# Test files and directories
+tests/
+*.test.py
+pytest.ini
+.pytest_cache/
+htmlcov/
+nosetests.xml
+*.cover
+*.py,cover
+.hypothesis/
+cover/
+
+# Coverage data
+.coverage
+.coverage.*
+coverage.xml
+
+# Build artifacts
+dist/
+build/
+*.egg-info/
+target/ # From PyBuilder, found in .gitignore
+
+# Environment files
+.env
+.env.*
+env.example
+local_settings.py # Django specific, from .gitignore
+
+# Translations
+*.mo
+*.pot
+
+# Specific tool caches and configs from .gitignore
+.tox/
+.nox/
+.cache # General cache, often good to exclude
+.mypy_cache/
+.dmypy.json
+dmypy.json
+.pyre/
+.pytype/
+.ruff_cache/
+cython_debug/ # Cython debug symbols
+
+# Other project-specific files/directories to exclude
+# For example, if 'screenshots/' or 'homeworks/' are large and not used by the app:
+screenshots/
+homeworks/
+results/*
+# Scrapy stuff:
+.scrapy
+# Sphinx documentation
+docs/_build/
+# Jupyter Notebook
+.ipynb_checkpoints
+# IPython
+profile_default/
+ipython_config.py
+# Celery stuff
+celerybeat-schedule
+celerybeat.pid
+# SageMath parsed files
+*.sage.py
+# mkdocs documentation
+/site
+# PyPI configuration file
+.pypirc
+# Frontend specific build artifacts (if any, e.g. node_modules, if not part of multi-stage build)
+# frontend/node_modules/
+# frontend/dist/
+# frontend/build/

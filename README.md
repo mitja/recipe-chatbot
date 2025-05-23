@@ -50,6 +50,36 @@ recipe-chatbot/
 └── README.md           # This file (Your guide!)
 ```
 
+## Using Makefile
+
+A `Makefile` is provided to simplify common development tasks. Here are some of the available targets:
+
+*   **`make install`**:
+    Installs all necessary project dependencies from `requirements.txt` and `requirements-dev.txt` (if present) using `uv pip install`.
+
+*   **`make run-app`**:
+    Starts the main Recipe Chatbot application. It will be available at `http://127.0.0.1:8000`. The server will auto-reload on code changes.
+
+*   **`make run-mcp-server`**:
+    Starts the MCP (Multi-Component Protocol) test server. It will be available at `http://127.0.0.1:8001`. This server will also auto-reload on code changes.
+
+*   **`make run-dev-servers`**:
+    Provides instructions to run both `make run-app` and `make run-mcp-server` in separate terminals for a complete development environment.
+
+*   **`make test`**:
+    Runs all unit tests located in the `tests/` directory.
+
+*   **`make smoke-test`**:
+    Runs the smoke test script (`scripts/smoke_test.py`). Make sure you have started the development servers (e.g., by following `make run-dev-servers` instructions) before running this.
+
+*   **`make clean`**:
+    Removes Python bytecode files (`.pyc`, `.pyo`) and `__pycache__` directories from the project.
+
+*   **`make help`**:
+    Displays a list of all available targets and their descriptions.
+
+To use a target, simply run `make <target-name>` from the project root directory (e.g., `make install`).
+
 ## Setup Instructions
 
 1.  **Clone the Repository (if you haven't already)**
@@ -106,6 +136,144 @@ recipe-chatbot/
 
         Please refer to the official LiteLLM documentation for the correct model prefixes and required environment variables for your chosen provider: [LiteLLM Supported Providers](https://docs.litellm.ai/docs/providers).
 
+## Development Setup with `uv`
+
+`uv` is an extremely fast Python package installer and resolver, written in Rust. It can be used as a drop-in replacement for `pip` and `venv`.
+
+**Installation**: To install `uv`, please refer to the official installation guide: [https://astral.sh/docs/uv/installation](https://astral.sh/docs/uv/installation)
+
+**Creating a Virtual Environment**:
+```bash
+# Create a virtual environment in a .venv directory
+uv venv
+```
+
+**Activating the Virtual Environment**:
+*   On macOS and Linux:
+    ```bash
+    source .venv/bin/activate
+    ```
+*   On Windows (Command Prompt):
+    ```bash
+    .venv\Scripts\activate.bat
+    ```
+*   On Windows (PowerShell):
+    ```bash
+    .venv\Scripts\Activate.ps1
+    ```
+
+**Installing Dependencies**:
+```bash
+# Install main dependencies
+uv pip install -r requirements.txt
+# Install development dependencies (including uv itself for consistency if desired, or other dev tools)
+uv pip install -r requirements-dev.txt
+```
+
+**(Optional) Running the Application/Scripts with `uv`**:
+You can also use `uv run` to execute scripts or applications within the managed environment without explicitly activating it:
+```bash
+# Example: Run the test MCP server (from project root)
+uv run uvicorn mcp.test_server:app --reload --port 8000
+
+# Example: Run the test MCP client (from project root)
+uv run python -m mcp.test_client
+
+# Example: Run unit tests (from project root)
+uv run python -m unittest discover -s tests -p 'test_*.py'
+```
+
+## Running with Docker Compose
+
+This project is configured to run with Docker Compose, allowing for an isolated and consistent environment for the main application and the MCP test server.
+
+### Prerequisites
+
+*   **Docker Desktop** (or Docker Engine + Docker Compose CLI) installed. You can download Docker Desktop from [docker.com](https://www.docker.com/products/docker-desktop/).
+
+### Build and Start Services
+
+To build the Docker images and start the services, navigate to the project root directory and run:
+
+```bash
+docker-compose up --build
+```
+
+For detached mode (to run in the background), use:
+```bash
+docker-compose up --build -d
+```
+
+### Accessing Services
+
+Once the services are running:
+
+*   **Main Application (Recipe Chatbot)**: Accessible at [http://localhost:8000](http://localhost:8000)
+*   **MCP Test Server**: Accessible at [http://localhost:8001](http://localhost:8001)
+    *   The test server expects a Bearer token for authentication. The token is defined in `mcp/test_server.py` (currently `test_token_123`).
+
+### Viewing Logs
+
+To view the logs from the running services:
+
+```bash
+# View logs for all services
+docker-compose logs -f
+
+# View logs for a specific service (e.g., app or mcp_server)
+docker-compose logs -f app
+docker-compose logs -f mcp_server
+```
+
+### Stopping Services
+
+To stop and remove the containers, networks, and volumes created by `docker-compose up`:
+
+```bash
+docker-compose down
+```
+
+To stop services without removing them (so they can be restarted quickly):
+```bash
+docker-compose stop
+```
+
+### Running Tests with Docker Compose (Optional Example)
+
+If you need to run unit tests within the Docker environment of the `app` service:
+```bash
+docker-compose exec app uv run python -m unittest discover -s tests -p 'test_*.py'
+```
+This command executes the test discovery inside the `app` container.
+
+### Running the Smoke Test
+
+After starting the Docker Compose stack, you can run a smoke test script to verify that both the main application and the MCP test server are reachable and responding correctly.
+
+1.  **Ensure the Docker Compose stack is running**:
+    Make sure services are up, preferably in detached mode:
+    ```bash
+    docker-compose up --build -d
+    ```
+    Allow a few moments for the services to initialize, especially on the first run. The smoke test script has built-in retries, but services should ideally be stable.
+
+2.  **Run the smoke test script**:
+    Execute the script from the project root:
+    ```bash
+    python scripts/smoke_test.py
+    ```
+    Or, using `uv` if your environment is set up with it:
+    ```bash
+    uv run python scripts/smoke_test.py
+    ```
+    The script will output the status of its checks and exit with code 0 if all tests pass, or 1 if any test fails.
+
+3.  **(Optional) Bring down the stack**:
+    After testing, you can bring down the services:
+    ```bash
+    docker-compose down
+    ```
+
 ## Running the Provided Application
 
 ### 1. Run the Web Application (Frontend and Backend)
@@ -118,6 +286,11 @@ recipe-chatbot/
 *   Open your web browser and navigate to: `http://127.0.0.1:8000`
 
     You should see the chat interface.
+
+#### Special Commands
+
+*   **Fetch MCP Test Data**: If you type `show mcp test data` into the chat, the application will attempt to connect to the configured MCP (Multi-Component Protocol) test server and display its `/test_data` endpoint content. This is useful for testing the MCP integration.
+    *   This feature relies on the `MCP_SERVER_URL` and `MCP_TEST_TOKEN` environment variables. Ensure these are set in your `.env` file (or Docker Compose environment) as detailed in `env.example` and the "Configure Environment Variables" section.
 
 
 ### 2. Run the Bulk Test Script
