@@ -43,11 +43,20 @@ class MockLiteLLMCompletion:
             elif "MCP_CONFIG_ERROR:" in system_message_content:
                 response_content = "I'm not properly configured to access the MCP server. Please check the settings."
 
-        return {
-            "choices": [{
-                "message": {
-                    "role": "assistant",
-                    "content": response_content
-                }
-            }]
-        }
+        class MockMessage:
+            def __init__(self, role, content):
+                self.role = role
+                self.content = content
+                self.tool_calls = []
+
+            def model_dump(self):
+                return {"role": self.role, "content": self.content}
+
+        class MockChoice:
+            def __init__(self, message):
+                self.message = message
+
+        class MockResponse:
+            def __init__(self, content):
+                self.choices = [MockChoice(MockMessage("assistant", content))]
+        return MockResponse(response_content)

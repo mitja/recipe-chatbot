@@ -35,7 +35,7 @@ async def get_test_data(token: str = Depends(verify_token)):
 @app.post("/submit_data")
 async def submit_data(data: TestDataModel, token: str = Depends(verify_token)):
     """Accepts and returns submitted data if authenticated."""
-    return {"message": "Data submitted successfully!", "received_data": data.dict()}
+    return {"message": "Data submitted successfully!", "received_data": data.model_dump()}
 
 if __name__ == "__main__":
     import uvicorn

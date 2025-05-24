@@ -23,4 +23,13 @@
 - implement recipe ingest pipeline
 - implement tracing eg. with wandb or custom dashboard
 - improve initial prompt until it works somewhat
+- frontend:
+  - dashboard (header menu)
+  - chat
+  - meal plan
+  - shopping list
+  - recipes
+  - caloric balance
+  - settings (profile, family, )
+- implement voice chat
 - finally: create basic evals and testing with snth data and looking at data

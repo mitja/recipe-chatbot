@@ -147,7 +147,14 @@ def get_latest_shopping_list(db: Session, family_id: int) -> Optional[ShoppingLi
     # if not family:
     #     return None # Or raise FamilyNotFoundError
 
-    return db.query(ShoppingList).        filter(ShoppingList.family_id == family_id).        order_by(ShoppingList.created_at.desc()).        first()
+    return db.query(
+            ShoppingList
+        ).filter(
+            ShoppingList.family_id == family_id
+        ).order_by(
+            ShoppingList.created_at.desc(),
+            ShoppingList.id.desc()
+        ).first()
 
 def get_shopping_list_by_id(db: Session, shopping_list_id: int) -> Optional[ShoppingList]:
     """
