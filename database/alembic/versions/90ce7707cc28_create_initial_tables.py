@@ -1,7 +1,7 @@
 """create_initial_tables
 
 Revision ID: 90ce7707cc28
-Revises: 
+Revises:
 Create Date: 2025-05-23 22:50:59.926590
 
 """
@@ -74,7 +74,7 @@ def downgrade() -> None:
     op.drop_index(op.f('ix_family_name'), table_name='family')
     op.drop_index(op.f('ix_family_id'), table_name='family')
     op.drop_table('family')
-    
+
     # For SQLite, explicit dropping of the ENUM type is not usually needed as it's
     # often implemented with CHECK constraints. If this were PostgreSQL with a native ENUM,
     # you might need: op.execute("DROP TYPE IF EXISTS genderenum;")

@@ -56,7 +56,7 @@ class TestDatabaseModels(unittest.TestCase):
         self.assertEqual(member.name, "John Doe")
         self.assertEqual(member.family_id, family.id)
         self.assertEqual(member.gender, GenderEnum.MALE)
-        
+
         # Test relationship from family
         self.session.refresh(family) # Refresh family to load members relationship
         self.assertIn(member, family.members)

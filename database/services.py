@@ -15,8 +15,8 @@ def create_family(db: Session, name: str, slug: str) -> Optional[Family]:
     """
     existing_family = db.query(Family).filter((Family.name == name) | (Family.slug == slug)).first()
     if existing_family:
-        return None 
-        
+        return None
+
     new_family = Family(name=name, slug=slug)
     try:
         db.add(new_family)
@@ -43,11 +43,11 @@ def get_family_by_id(db: Session, family_id: int) -> Optional[Family]:
 
 # --- FamilyMemberService Functions ---
 
-def add_family_member(db: Session, family_id: int, name: str, 
-                      height_cm: Optional[int] = None, 
-                      weight_kg: Optional[float] = None, 
-                      age_years: Optional[int] = None, 
-                      gender: Optional[GenderEnum] = None, 
+def add_family_member(db: Session, family_id: int, name: str,
+                      height_cm: Optional[int] = None,
+                      weight_kg: Optional[float] = None,
+                      age_years: Optional[int] = None,
+                      gender: Optional[GenderEnum] = None,
                       target_caloric_intake_kcal: Optional[int] = None) -> Optional[FamilyMember]:
     """
     Adds a new member to an existing family.
@@ -87,11 +87,11 @@ def get_family_members_summary(db: Session, family_id: int) -> str:
 
     output = io.StringIO()
     csv_writer = csv.writer(output)
-    
+
     # Write header
     header = ['id', 'name', 'height_cm', 'weight_kg', 'age_years', 'gender', 'target_caloric_intake_kcal']
     csv_writer.writerow(header)
-    
+
     # Write member data
     for member in members:
         gender_value = member.gender.value if member.gender else None # Get string value from Enum
@@ -104,7 +104,7 @@ def get_family_members_summary(db: Session, family_id: int) -> str:
             gender_value,
             member.target_caloric_intake_kcal
         ])
-        
+
     return output.getvalue().strip() # Use strip() to remove any trailing newline
 
 def get_family_member_details(db: Session, member_id: int) -> Optional[FamilyMember]:
@@ -128,10 +128,10 @@ def create_shopping_list(db: Session, family_id: int, items: Dict) -> Optional[S
 
     new_shopping_list = ShoppingList(
         family_id=family_id,
-        items_json=items 
+        items_json=items
     )
     # created_at is handled by server_default=func.now() in the model
-    
+
     db.add(new_shopping_list)
     db.commit()
     db.refresh(new_shopping_list)
@@ -143,7 +143,7 @@ def get_latest_shopping_list(db: Session, family_id: int) -> Optional[ShoppingLi
     Returns the ShoppingList object or None if the family has no shopping lists or does not exist.
     """
     # First, check if family exists to give a clear indication, though the query itself would also return None.
-    # family = get_family_by_id(db, family_id) 
+    # family = get_family_by_id(db, family_id)
     # if not family:
     #     return None # Or raise FamilyNotFoundError
 

@@ -76,7 +76,7 @@ class TestDatabaseServices(unittest.TestCase):
     def test_get_family_members_summary_csv(self):
         family = services.create_family(self.db, name="Summary CSV Family", slug="summary-csv-family")
         self.assertIsNotNone(family, "Family creation failed")
-        
+
         # Add members
         member1 = services.add_family_member(self.db, family.id, "Alice", age_years=30, gender=GenderEnum.FEMALE)
         member2 = services.add_family_member(self.db, family.id, "Bob", age_years=35, gender=GenderEnum.MALE, height_cm=180)
@@ -85,13 +85,13 @@ class TestDatabaseServices(unittest.TestCase):
 
         csv_summary = services.get_family_members_summary(self.db, family.id)
         self.assertIsInstance(csv_summary, str)
-        
+
         # Normalize newlines and split
         lines = csv_summary.replace('\r\n', '\n').strip().split('\n')
-        
+
         self.assertEqual(len(lines), 3) # Header + 2 members
         self.assertEqual(lines[0], "id,name,height_cm,weight_kg,age_years,gender,target_caloric_intake_kcal")
-        
+
         # Check content (order of members might vary, so check for presence)
         alice_line_found = any("Alice" in line and "female" in line for line in lines[1:])
         bob_line_found = any("Bob" in line and "male" in line and "180" in line for line in lines[1:])
@@ -108,7 +108,7 @@ class TestDatabaseServices(unittest.TestCase):
     def test_get_family_members_summary_family_not_found(self):
         summary = services.get_family_members_summary(self.db, 999) # Non-existent family_id
         self.assertEqual(summary, "Family not found.")
-        
+
     def test_get_family_member_details(self):
         family = services.create_family(self.db, name="Details Family", slug="details-slug")
         self.assertIsNotNone(family, "Family creation failed")
@@ -129,7 +129,7 @@ class TestDatabaseServices(unittest.TestCase):
         self.assertIsNotNone(family, "Family creation failed")
         items = {"apples": 5, "bread": 1}
         shopping_list = services.create_shopping_list(self.db, family_id=family.id, items=items)
-        
+
         self.assertIsNotNone(shopping_list)
         self.assertEqual(shopping_list.family_id, family.id)
         self.assertEqual(shopping_list.items_json["apples"], 5)
@@ -143,14 +143,14 @@ class TestDatabaseServices(unittest.TestCase):
     def test_get_latest_shopping_list(self):
         family = services.create_family(self.db, name="Latest List Family", slug="latest-list-family")
         self.assertIsNotNone(family, "Family creation failed")
-        
+
         list1 = services.create_shopping_list(self.db, family.id, {"item1": "old"})
         self.assertIsNotNone(list1)
-        
+
         # Introduce a delay to ensure distinct created_at timestamps
         # This is a common, if slightly imperfect, way to test "latest" in SQLite without mocking time
         import time; time.sleep(0.02) # Increased delay slightly
-        
+
         list2 = services.create_shopping_list(self.db, family.id, {"item2": "new"})
         self.assertIsNotNone(list2)
 
@@ -168,7 +168,7 @@ class TestDatabaseServices(unittest.TestCase):
     def test_get_latest_shopping_list_family_not_found(self):
         latest_list = services.get_latest_shopping_list(self.db, 999) # Non-existent family_id
         self.assertIsNone(latest_list)
-        
+
     def test_get_shopping_list_by_id(self):
         family = services.create_family(self.db, name="Get List By ID Family", slug="get-list-by-id-slug")
         self.assertIsNotNone(family, "Family creation failed")

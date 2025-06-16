@@ -11,7 +11,7 @@ This directory contains the foundation for MCP connections and a test server/cli
 
 1.  **Ensure dependencies are installed**:
     ```bash
-    pip install -r ../requirements.txt 
+    pip install -r ../requirements.txt
     ```
     (Assuming you are in the `mcp` directory, otherwise adjust path to `requirements.txt`)
 
@@ -43,7 +43,7 @@ To run the unit tests for the MCP modules:
 
 1.  **Ensure dependencies are installed** (including `requests`, `fastapi`, `httpx`). If you are in the `mcp` directory:
     ```bash
-    pip install -r ../requirements.txt 
+    pip install -r ../requirements.txt
     ```
     Or from the project root:
     ```bash

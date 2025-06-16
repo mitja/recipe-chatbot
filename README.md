@@ -294,7 +294,7 @@ The chatbot can now understand requests related to managing family information a
 You can try prompts like:
 
 *   "Please create a family named The Jetsons with the slug 'jetsons'."
-*   "Can you add a member named George to the family 'jetsons'? His age is 40 and he is male." 
+*   "Can you add a member named George to the family 'jetsons'? His age is 40 and he is male."
     *   (You can also specify height, weight, and target caloric intake: e.g., "height 175 cm, weight 70 kg, target calories 2200")
 *   "Show me a summary of members in the 'jetsons' family."
 

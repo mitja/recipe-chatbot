@@ -28,7 +28,7 @@ class FamilyMember(Base):
 
     id = Column(Integer, primary_key=True, autoincrement=True, index=True)
     family_id = Column(Integer, ForeignKey("family.id"), nullable=False)
-    
+
     name = Column(String(100), nullable=False)
     height_cm = Column(Integer, nullable=True)
     weight_kg = Column(Float, nullable=True)
@@ -47,11 +47,11 @@ class ShoppingList(Base):
 
     id = Column(Integer, primary_key=True, autoincrement=True, index=True)
     family_id = Column(Integer, ForeignKey("family.id"), nullable=False)
-    
+
     created_at = Column(DateTime, server_default=func.now(), nullable=False)
     # Using JSON type. For SQLite, this often means TEXT affinity and manual JSON handling
     # or SQLAlchemy's JSON type handling which might do the serialization/deserialization.
-    items_json = Column(JSON, nullable=True) 
+    items_json = Column(JSON, nullable=True)
 
     # Relationship
     family = relationship("Family", back_populates="shopping_lists")

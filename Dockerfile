@@ -23,7 +23,7 @@ COPY frontend/ ./frontend
 COPY prompts/ ./prompts
 COPY data/ ./data
 # If there are other root-level files like main.py or utils.py that are part of the app, copy them too.
-# COPY main.py . 
+# COPY main.py .
 # COPY utils.py .
 
 # Make port 8000 available to the world outside this container

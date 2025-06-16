@@ -66,7 +66,7 @@ class TestAgentFunctionCalling(unittest.TestCase):
         mock_first_completion_choice_message.tool_calls[0].type = "function"
         mock_first_completion_choice_message.tool_calls[0].function.name = "create_family"
         mock_first_completion_choice_message.tool_calls[0].function.arguments = json.dumps({"name": "The Simpsons", "slug": "simpsons"})
-        
+
         # .model_dump() is called on this object in get_agent_response
         mock_first_completion_choice_message.model_dump.return_value = first_llm_response_message_content
 
@@ -99,7 +99,7 @@ class TestAgentFunctionCalling(unittest.TestCase):
         # --- Assertions ---
         # 1. Check litellm.completion calls
         self.assertEqual(mock_litellm_completion.call_count, 2)
-        
+
         # Call 1 args
         call1_args, call1_kwargs = mock_litellm_completion.call_args_list[0]
         self.assertEqual(call1_kwargs['model'], os.environ["MODEL_NAME"])
@@ -190,7 +190,7 @@ class TestAgentFunctionCalling(unittest.TestCase):
     def test_function_call_json_decode_error_in_args(self, mock_litellm_completion, mock_execute_tool):
         # --- First LLM call: Simulate LLM requesting tool with bad JSON args ---
         bad_json_args = "{\"name\": \"The Simpsons\", \"slug\": simpsons}" # 'simpsons' not quoted
-        
+
         mock_first_completion_choice_message = MagicMock()
         mock_first_completion_choice_message.role = "assistant"
         mock_first_completion_choice_message.content = None
@@ -200,9 +200,9 @@ class TestAgentFunctionCalling(unittest.TestCase):
         mock_first_completion_choice_message.tool_calls[0].function.name = "create_family"
         mock_first_completion_choice_message.tool_calls[0].function.arguments = bad_json_args
         mock_first_completion_choice_message.model_dump.return_value = { # Construct dict for history
-             "role": "assistant", "content": None, 
+             "role": "assistant", "content": None,
              "tool_calls": [{
-                 "id": "call_err_123", "type": "function", 
+                 "id": "call_err_123", "type": "function",
                  "function": {"name": "create_family", "arguments": bad_json_args}
              }]
         }
@@ -216,7 +216,7 @@ class TestAgentFunctionCalling(unittest.TestCase):
         mock_second_completion_choice_message.model_dump.return_value = {
             "role": "assistant", "content": error_response_content
         }
-        
+
         mock_litellm_completion.side_effect = [
             MagicMock(choices=[MagicMock(message=mock_first_completion_choice_message)]),
             MagicMock(choices=[MagicMock(message=mock_second_completion_choice_message)])

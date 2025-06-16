@@ -17,7 +17,7 @@ def execute_tool(tool_name: str, tool_args: Dict[str, Any], db: Session) -> Any:
     Returns:
         The result from the service function, or an error message string.
     """
-    
+
     print(f"Executing tool: {tool_name} with args: {tool_args}") # Debug print
 
     if tool_name == "create_family":
@@ -47,7 +47,7 @@ def execute_tool(tool_name: str, tool_args: Dict[str, Any], db: Session) -> Any:
             except KeyError:
                 valid_genders = [g.value for g in GenderEnum]
                 return f"Error: Invalid gender value '{member_details['gender']}'. Valid options are: {', '.join(valid_genders)}."
-        
+
         member = db_services.add_family_member(db, family_id=family.id, **member_details)
         if member:
             return f"Successfully added member: {member.name} to family {family.name} (Member ID: {member.id})"
@@ -59,12 +59,12 @@ def execute_tool(tool_name: str, tool_args: Dict[str, Any], db: Session) -> Any:
     elif tool_name == "get_family_members_summary":
         if "family_slug" not in tool_args:
             return "Error: Missing required argument 'family_slug' for get_family_members_summary."
-        
+
         family_slug = tool_args["family_slug"]
         family = db_services.get_family_by_slug(db, slug=family_slug)
         if not family:
             return f"Error: Family with slug '{family_slug}' not found."
-        
+
         summary_csv = db_services.get_family_members_summary(db, family_id=family.id)
         # The service already returns "Family not found." or "No members found..."
         # So, we can directly return the result.

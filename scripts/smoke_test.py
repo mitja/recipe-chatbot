@@ -37,7 +37,7 @@ def attempt_request(method, url, headers=None, expected_status=200, check_json_c
         except requests.Timeout:
             if i == MAX_RETRIES - 1:
                 return False, None # No response if timeout on last attempt
-        
+
         print(f"  Attempt {i+1}/{MAX_RETRIES} failed. Retrying in {RETRY_DELAY}s...")
         time.sleep(RETRY_DELAY)
     return False, None # Should be unreachable if MAX_RETRIES > 0
@@ -45,9 +45,9 @@ def attempt_request(method, url, headers=None, expected_status=200, check_json_c
 def check_main_app():
     print("\n--- Checking Main Application (Recipe Chatbot) ---")
     success, response = attempt_request(
-        "GET", 
-        MAIN_APP_URL, 
-        expected_status=200, 
+        "GET",
+        MAIN_APP_URL,
+        expected_status=200,
         check_text_contains="<title>Recipe Chatbot</title>"
     )
     if success:
@@ -107,7 +107,7 @@ def check_mcp_server():
 if __name__ == "__main__":
     print("Starting Docker Compose Smoke Test...")
     # Give services a moment to start up, especially if run immediately after docker-compose up
-    # time.sleep(10) # Optional: Initial delay 
+    # time.sleep(10) # Optional: Initial delay
 
     main_app_healthy = check_main_app()
     mcp_server_healthy = check_mcp_server()

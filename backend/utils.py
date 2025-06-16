@@ -75,7 +75,7 @@ def get_agent_response(messages: List[Dict[str, str]]) -> List[Dict[str, str]]: 
         The updated conversation history, including the assistant's new reply.
     """
     # --- Start of new function calling logic ---
-    
+
     # Make a mutable copy of the incoming messages
     current_conversation_history = list(messages)
 
@@ -105,7 +105,7 @@ def get_agent_response(messages: List[Dict[str, str]]) -> List[Dict[str, str]]: 
         tools=TOOL_DEFINITIONS,
         tool_choice="auto"  # Let the LLM decide if it wants to use a tool
     )
-    
+
     print(f"Debug: LiteLLM response (1st call): {completion}") # Debug
 
     # Get the first choice from the completion
@@ -117,7 +117,7 @@ def get_agent_response(messages: List[Dict[str, str]]) -> List[Dict[str, str]]: 
     # --- Check for Tool Calls ---
     if llm_response_message.tool_calls:
         print(f"Debug: LLM requested tool calls: {llm_response_message.tool_calls}") # Debug
-        
+
         db_session = next(get_db()) # Obtain a database session
         try:
             for tool_call in llm_response_message.tool_calls:
@@ -135,7 +135,7 @@ def get_agent_response(messages: List[Dict[str, str]]) -> List[Dict[str, str]]: 
                         tool_args=function_args,
                         db=db_session
                     )
-                
+
                 print(f"Debug: Tool '{function_name}' result: {tool_result_content}") # Debug
                 current_conversation_history.append({
                     "role": "tool",
@@ -148,7 +148,7 @@ def get_agent_response(messages: List[Dict[str, str]]) -> List[Dict[str, str]]: 
 
         # --- Second LLM Call (after processing tool calls) ---
         print(f"Debug: Sending to LiteLLM (2nd call): {current_conversation_history}") # Debug
-        
+
         # The SYSTEM_PROMPT should already be at the start from the first call's preparation.
         # We don't pass `tools` or `tool_choice` here, as we expect a direct natural language response.
         final_completion = litellm.completion(
@@ -156,10 +156,10 @@ def get_agent_response(messages: List[Dict[str, str]]) -> List[Dict[str, str]]: 
             messages=current_conversation_history
         )
         print(f"Debug: LiteLLM response (2nd call): {final_completion}") # Debug
-        
+
         final_llm_response_message = final_completion.choices[0].message
         current_conversation_history.append(final_llm_response_message.model_dump())
-    
+
     # If no tool_calls, the llm_response_message from the first call is the final one.
     # The current_conversation_history already has it appended.
     

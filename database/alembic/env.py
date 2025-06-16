@@ -74,7 +74,7 @@ def run_migrations_online() -> None:
     """
     # Ensure DATABASE_URL from environment is prioritized for the engine
     db_url = os.environ.get("DATABASE_URL", config.get_main_option("sqlalchemy.url"))
-    
+
     engine_config = config.get_section(config.config_ini_section, {})
     engine_config['sqlalchemy.url'] = db_url # Ensure the engine uses the correct URL
 
@@ -86,7 +86,7 @@ def run_migrations_online() -> None:
 
     with connectable.connect() as connection:
         context.configure(
-            connection=connection, 
+            connection=connection,
             target_metadata=target_metadata,
             render_as_batch=True # Added for SQLite compatibility
         )
