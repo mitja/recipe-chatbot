@@ -36,6 +36,9 @@ RESULTS_DIR.mkdir(exist_ok=True)
 
 MAX_WORKERS = 32 # For ThreadPoolExecutor
 
+timestamp = dt.datetime.now().strftime("%Y%m%d_%H%M%S")
+DEFAULT_OUT_PATH = RESULTS_DIR / f"results_{timestamp}.csv"
+
 # -----------------------------------------------------------------------------
 # Core logic
 # -----------------------------------------------------------------------------
@@ -61,7 +64,7 @@ def process_query_sync(query_id: str, query: str) -> Tuple[str, str, str]:
 
 
 # Renamed and made sync
-def run_bulk_test(csv_path: Path, num_workers: int = MAX_WORKERS) -> None:
+def run_bulk_test(csv_path: Path, num_workers: int = MAX_WORKERS, out_path: Path = DEFAULT_OUT_PATH) -> None:
     """Main entry point for bulk testing (synchronous version)."""
 
     with csv_path.open("r", newline="", encoding="utf-8") as csv_file:
@@ -116,9 +119,6 @@ def run_bulk_test(csv_path: Path, num_workers: int = MAX_WORKERS) -> None:
                 results_data.append((item_id, item_query, f"Exception during processing: {str(exc)}"))
         console.print("[bold blue]All queries processed.[/bold blue]")
 
-    timestamp = dt.datetime.now().strftime("%Y%m%d_%H%M%S")
-    out_path = RESULTS_DIR / f"results_{timestamp}.csv"
-
     with out_path.open("w", newline="", encoding="utf-8") as csv_file:
         writer = csv.writer(csv_file)
         writer.writerow(["id", "query", "response"])
@@ -128,8 +128,27 @@ def run_bulk_test(csv_path: Path, num_workers: int = MAX_WORKERS) -> None:
 
 
 if __name__ == "__main__":
-    parser = argparse.ArgumentParser(description="Bulk test the recipe chatbot")
-    parser.add_argument("--csv", type=Path, default=DEFAULT_CSV, help="Path to CSV file containing queries (column name: 'query').")
-    parser.add_argument("--workers", type=int, default=MAX_WORKERS, help=f"Number of worker threads (default: {MAX_WORKERS}).")
+    parser = argparse.ArgumentParser(
+        description="Bulk test the recipe chatbot"
+    )
+    parser.add_argument(
+        "--csv", type=Path, default=DEFAULT_CSV,
+        help="Path to CSV file containing queries (column name: 'query')."
+    )
+    parser.add_argument(
+        "--workers", type=int, default=MAX_WORKERS,
+        help=f"Number of worker threads (default: {MAX_WORKERS})."
+    )
+    parser.add_argument(
+        "--out-path", type=Path, default=DEFAULT_OUT_PATH,
+        help=f"Path to save results CSV (default: {DEFAULT_OUT_PATH})"
+    )
+
+    # Hint about SYSTEM_PROMPT_PATH
+    print(
+        "\n[Hint] You can define a custom system prompt by setting the SYSTEM_PROMPT_PATH environment variable.\n"
+        "Example:\n"
+        "  SYSTEM_PROMPT_PATH=prompts/systemprompt-002.md python bulk_test.py --csv data/sample_queries.csv\n"
+    )
     args = parser.parse_args()
-    run_bulk_test(args.csv, args.workers)
+    run_bulk_test(args.csv, args.workers, args.out_path)

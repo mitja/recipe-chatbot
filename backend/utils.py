@@ -99,13 +99,14 @@ def get_agent_response(messages: List[Dict[str, str]]) -> List[Dict[str, str]]: 
 
     # --- First LLM Call ---
     print(f"Debug: Sending to LiteLLM (1st call): {current_conversation_history}") # Debug
-    print(f"Debug: Using tools: {TOOL_DEFINITIONS}") # Debug
+    # print(f"Debug: Using tools: {TOOL_DEFINITIONS}") # Debug
 
+    # disable tools for now
     completion = litellm.completion(
         model=MODEL_NAME,
         messages=current_conversation_history,
-        tools=TOOL_DEFINITIONS,
-        tool_choice="auto"  # Let the LLM decide if it wants to use a tool
+        # tools=TOOL_DEFINITIONS,
+        # tool_choice="auto"  # Let the LLM decide if it wants to use a tool
     )
     
     print(f"Debug: LiteLLM response (1st call): {completion}") # Debug
