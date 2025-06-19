@@ -9,3 +9,13 @@ requests
 pydantic
 SQLAlchemy~=2.0.0
 Alembic~=1.13.0
+numpy
+scikit-learn
+judgy
+rank-bm25
+tqdm
+pydantic
+typing-extensions
+matplotlib
+seaborn
+plotly
