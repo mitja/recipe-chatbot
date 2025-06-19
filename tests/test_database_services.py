@@ -156,6 +156,7 @@ class TestDatabaseServices(unittest.TestCase):
 
         latest_list = services.get_latest_shopping_list(self.db, family.id)
         self.assertIsNotNone(latest_list)
+        print(f"Latest List ID: {latest_list.id}, Created At: {latest_list.created_at}") # Debug output
         self.assertEqual(latest_list.id, list2.id, "The latest list should be list2")
         self.assertEqual(latest_list.items_json["item2"], "new")
 

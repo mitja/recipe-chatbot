@@ -18,9 +18,9 @@ This directory contains the foundation for MCP connections and a test server/cli
 2.  **Start the server**:
     From the project root directory:
     ```bash
-    uvicorn mcp.test_server:app --reload --port 8000
+    uv run uvicorn mcp.test_server:app --reload --port 8001
     ```
-    The server will be available at `http://127.0.0.1:8000`.
+    The server will be available at `http://127.0.0.1:8001`.
 
 3.  **Test Token**:
     The server uses a hardcoded bearer token for authentication. The token is defined in `mcp.test_server.py` as `TEST_TOKEN`.

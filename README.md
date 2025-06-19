@@ -174,7 +174,7 @@ uv pip install -r requirements-dev.txt
 You can also use `uv run` to execute scripts or applications within the managed environment without explicitly activating it:
 ```bash
 # Example: Run the test MCP server (from project root)
-uv run uvicorn mcp.test_server:app --reload --port 8000
+uv run uvicorn mcp.test_server:app --reload --port 8001
 
 # Example: Run the test MCP client (from project root)
 uv run python -m mcp.test_client
