@@ -1,0 +1,831 @@
+id,query,response,notes,status
+SYN5,Easy German dinner with eggs in 20 minutes,"# German Egg Breakfast Skillet
+
+- Servings: 4
+- Prep Time: 5 minutes
+- Cook Time: 15 minutes
+
+## Ingredients (scaled for 4 servings)
+
+- 8 large eggs
+- 1 medium onion, chopped
+- 2 medium potatoes, thinly sliced
+- 1/2 cup sliced bell peppers (any color)
+- 2 tbsp olive oil
+- 1 tsp salt
+- 1/2 tsp black pepper
+- 1 tsp paprika
+- Fresh parsley for garnish (optional)
+
+## Preparation
+
+1. Heat olive oil in a large skillet over medium heat.
+2. Add chopped onions and sliced potatoes; cook for about 8-10 minutes until potatoes are tender and golden.
+3. Stir in bell peppers and cook for another 3-4 minutes.
+4. Season with salt, pepper, and paprika.
+5. Make 4 small wells in the vegetable mixture and crack an egg into each well.
+6. Cover the skillet and cook for 3-5 minutes until eggs are set to desired doneness.
+7. Garnish with fresh parsley if desired, and serve hot.
+
+## Nutritional Information (per serving)
+
+- Calories: 280 kcal
+- Protein: 13g
+- Carbohydrates: 20g
+- Fat: 16g
+
+## Dietary Constraints Compliance
+
+- Father (Tom): Suitable (low unhealthy fats, no pork)
+- Mother (Sarah): Suitable
+- Daughter (Emma): Suitable (good for active growth and energy)",good result,fail
+SYN19,Quick French breakfast with tuna ideas,"# Tuna and Vegetable Breakfast Wraps
+
+- Servings: 4
+- Prep Time: 10 minutes
+- Cook Time: 5 minutes
+
+## Ingredients (scaled)
+
+- 4 whole wheat tortillas
+- 1 can (150g) tuna in water, drained
+- 1/2 cup plain Greek yogurt
+- 1 small cucumber, diced
+- 1 small bell pepper, diced
+- 1 tablespoon olive oil
+- 1 tablespoon lemon juice
+- Salt and pepper to taste
+- Fresh parsley, chopped (optional)
+
+## Preparation
+
+1. In a bowl, combine tuna, Greek yogurt, lemon juice, salt, pepper, and parsley. Mix well.
+2. Warm the tortillas slightly in a pan or microwave.
+3. Spread the tuna mixture evenly over each tortilla.
+4. Top with diced cucumber and bell pepper.
+5. Roll up each tortilla tightly to form wraps.
+6. Cut in half diagonally and serve immediately.
+
+## Nutritional Information (per serving)
+
+- Calories: 250
+- Protein: 20g
+- Carbohydrates: 30g
+- Fat: 5g
+
+## Dietary Constraints Compliance
+
+- Father (Tom): Meets low-fat, low-unhealthy fats, limited red meat.
+- Mother (Sarah): Balanced, suitable for maintenance.
+- Daughter (Emma): Nutritious and supporting active growth.
+
+This meal provides high protein, wholesome carbs, and healthy fats, perfect for a quick and healthy French-inspired breakfast.","good result, but I don't like the final note",fail
+SYN14,Italian breakfast with eggs quick and easy,"# Classic Italian Breakfast Scramble
+
+- Servings: 3
+- Prep Time: 10 minutes
+- Cook Time: 10 minutes
+
+## Ingredients (scaled for 3 servings)
+- 6 large eggs
+- 1 cup cherry tomatoes, halved
+- 1/2 cup fresh basil leaves, chopped
+- 2 tbsp extra virgin olive oil
+- 1/4 cup grated Parmesan cheese
+- Salt and pepper to taste
+- Optional: 1 small handful of arugula or spinach
+
+## Preparation
+
+1. Crack the eggs into a bowl, whisk with a pinch of salt and pepper.
+2. Heat olive oil in a non-stick skillet over medium heat.
+3. Add cherry tomatoes and cook for 2-3 minutes until slightly softened.
+4. Pour in the beaten eggs and gently scramble, stirring constantly.
+5. When eggs are nearly set, sprinkle with Parmesan cheese and chopped basil.
+6. Optional: add arugula or spinach in the last minute, stir until wilted.
+7. Serve immediately with whole-grain toast if desired.
+
+## Nutritional Information (per serving)
+- Calories: 220
+- Protein: 14g
+- Carbohydrates: 8g
+- Fat: 16g
+
+## Dietary Constraints Compliance
+- Father (Tom): Suitable, low unhealthy fats, no pork.
+- Mother (Sarah): Suitable, balanced ingredients.
+- Daughter (Emma): Suitable, protein and greens support growth.
+
+This dish is quick, nutritious, and embodies classic Italian flavors!","good result, only the final note could be dropped",fail
+SYN12,Vietnamese supper with eggs low prep time,"# Vietnamese Egg Drop Soup (Canh Trứng)
+
+- Servings: 4
+- Prep Time: 5 minutes
+- Cook Time: 10 minutes
+
+## Ingredients (scaled)
+
+- 4 large eggs
+- 4 cups vegetable broth (low-sodium)
+- 1 cup chopped green onions
+- 1 cup spinach leaves (fresh)
+- 1 tablespoon fish sauce (or soy sauce for vegetarian option)
+- 1 teaspoon salt (to taste)
+- 1/2 teaspoon white pepper
+- 1 teaspoon sesame oil (optional)
+- Fresh cilantro for garnish
+
+## Preparation
+
+1. Bring the vegetable broth to a gentle boil in a pot.
+2. Add fish sauce, salt, and white pepper to the broth.
+3. Slowly pour beaten eggs into the boiling broth in a thin stream, stirring gently to create egg ribbons.
+4. Add chopped green onions and spinach; cook for 1-2 minutes until greens wilt.
+5. Remove from heat, add sesame oil if using, and serve hot, garnished with fresh cilantro.
+
+## Nutritional Information (per serving)
+
+- Calories: 120
+- Protein: 7g
+- Carbohydrates: 8g
+- Fat: 7g
+
+## Dietary Constraints Compliance
+
+- Father (Tom): Meets low-fat, low-unhealthy fats, no pork
+- Mother (Sarah): Suitable, balanced for maintenance
+- Daughter (Emma): Nutritious, supports growth
+
+This light, quick Vietnamese egg drop soup is nutritious, high in protein, and low in prep time, perfect for a satisfying supper.","good result, final note, again",fail
+SYN6,Italian breakfast with chicken breast quick recipes,"# Italian Breakfast with Chicken Breast
+
+- Servings: 4
+- Prep Time: 10 minutes
+- Cook Time: 15 minutes
+
+## Ingredients (scaled)
+
+- 2 chicken breasts (about 150g each)
+- 4 whole wheat bread slices
+- 4 eggs
+- 1 cup cherry tomatoes, halved
+- 2 tbsp olive oil
+- 1 clove garlic, minced
+- 1 tsp Italian seasoning
+- Fresh basil leaves for garnish
+- Salt and pepper to taste
+
+## Preparation
+
+1. Season the chicken breasts with Italian seasoning, salt, and pepper.
+2. Heat 1 tbsp olive oil in a skillet over medium heat. Cook chicken breasts for 6-7 minutes per side until cooked through. Remove and let rest.
+3. In the same skillet, add the minced garlic and cherry tomatoes; sauté for 2-3 minutes. Remove and set aside.
+4. In a separate non-stick pan, heat remaining olive oil and fry eggs sunny-side up or to preferred doneness.
+5. While eggs cook, slice the rested chicken breasts.
+6. Toast the whole wheat bread slices.
+7. Assemble the breakfast: place chicken slices on toast, top with sautéed tomatoes, add the fried eggs, and garnish with basil.
+
+## Nutritional Information (per serving)
+
+- Calories: 420
+- Protein: 35g
+- Carbohydrates: 30g
+- Fat: 14g
+
+## Dietary Constraints Compliance
+
+- Father (Tom): Suitable, low unhealthy fats, no pork
+- Mother (Sarah): Suitable
+- Daughter (Emma): Suitable, nutrient-rich for growth",great result,pass
+SYN17,What to make German supper with salmon in 20 min,"# German Salmon avec Kräuterquark (Herb-Quark Salmon)
+
+- Servings: 4
+- Prep Time: 10 minutes
+- Cook Time: 10 minutes
+
+## Ingredients (scaled for 4 servings)
+
+- 4 salmon fillets (about 150g each)
+- 200g quark (or Greek yogurt as a substitute)
+- 1 small bunch fresh chives, chopped
+- 1 small bunch fresh dill, chopped
+- 1 lemon (for juice and zest)
+- 2 tablespoons olive oil
+- Salt and pepper to taste
+- Optional: 1 teaspoon Dijon mustard
+
+## Preparation
+
+1. Heat 1 tablespoon olive oil in a large skillet over medium heat.
+2. Season salmon fillets with salt, pepper, and a squeeze of lemon juice.
+3. Place salmon in the skillet, skin-side down if applicable, and cook for about 4-5 minutes per side until cooked through.
+4. While salmon cooks, mix quark, chopped chives, dill, lemon zest, and a teaspoon of Dijon mustard in a bowl. Add salt and pepper to taste.
+5. Once salmon is ready, serve each fillet topped with a generous dollop of herb quark and a lemon wedge on the side.
+
+## Nutritional Information (per serving)
+
+- Calories: 350 kcal
+- Protein: 30g
+- Carbohydrates: 5g
+- Fat: 22g
+
+## Dietary Constraints Compliance
+
+- Father (Tom): Suitable; low unhealthy fats, no pork
+- Mother (Sarah): Suitable
+- Daughter (Emma): Suitable; healthy omega-3 fats and protein for growth
+
+Enjoy a quick, nutritious German-inspired salmon supper!","funny name, but i like it! only the final sentence, again.",fail
+SYN13,What can I cook German dinner with salmon fast,"# Quick German Salmon Dinner
+
+- Servings: 4
+- Prep Time: 10 minutes
+- Cook Time: 15 minutes
+
+## Ingredients (scaled for 4 servings)
+
+- 4 salmon fillets (~150g each)
+- 2 tbsp olive oil
+- 1 lemon (juice and zest)
+- 2 cloves garlic (minced)
+- 1 tsp dried dill
+- 1 tsp paprika
+- Salt and pepper to taste
+- 200g green beans
+- 200g boiled potatoes or pre-cooked potatoes (for quick preparation)
+
+## Preparation
+
+1. **Preheat** a large skillet over medium heat with 1 tbsp olive oil.
+
+2. **Season** salmon fillets with salt, pepper, paprika, and dill.
+
+3. **Cook** salmon fillets in the skillet about 4-5 minutes per side, until crispy outside and cooked through.
+
+4. **Meanwhile**, steam or microwave green beans until tender (about 5-7 minutes).
+
+5. **Toast** pre-cooked potatoes or boil fresh potatoes for about 10 minutes until tender, then toss with lemon juice and zest.
+
+6. **Serve** salmon with green beans and potatoes, garnished with extra lemon slices if desired.
+
+## Nutritional Information (per serving)
+
+- Calories: 470
+- Protein: 35g
+- Carbohydrates: 30g
+- Fat: 20g
+
+## Dietary Constraints Compliance
+
+- Father (Tom): Meets requirement with healthy fats from salmon and olive oil; low in unhealthy fats.
+- Mother (Sarah): Balanced meal; complies fully.
+- Daughter (Emma): Nutrient-rich, supports growth and activity.
+
+Enjoy your quick and nutritious German-style salmon dinner!","I don't like the format of the preparation (fat first word, newline between items), also final note",fail
+SYN9,German supper with eggs fast options,"# Quick German Egg Supper (Omelette with Spinach and Sausages)
+
+- Servings: 4
+- Prep Time: 10 minutes
+- Cook Time: 15 minutes
+
+## Ingredients (scaled)
+
+- 8 large eggs
+- 200g cooked chicken sausages (preferably lean, e.g., chicken or turkey)
+- 150g fresh spinach
+- 1 small onion, chopped
+- 1 tbsp olive oil
+- Salt and pepper to taste
+- 50g low-fat cheese (optional)
+
+## Preparation
+
+1. Slice the sausages into small pieces and set aside.
+2. In a skillet, heat olive oil over medium heat. Add chopped onion and sauté until soft, about 2-3 minutes.
+3. Add sausages to the skillet and cook for another 3-4 minutes until heated through.
+4. Stir in the spinach and cook until wilted, about 2 minutes.
+5. Beat the eggs in a bowl and season with salt and pepper.
+6. Pour eggs over the sausage and spinach mixture in the skillet. Cook until eggs are set, about 5-7 minutes.
+7. If desired, sprinkle with low-fat cheese and let melt for 1 minute before serving.
+
+## Nutritional Information (per serving)
+
+- Calories: 320
+- Protein: 23g
+- Carbohydrates: 6g
+- Fat: 22g
+
+## Dietary Constraints Compliance
+
+- Father: Suitable (low carbs, moderate fat, high protein, no pork)
+- Mother: Suitable (balanced, low-fat variant)
+- Daughter: Suitable (nutritious, supports growth)
+
+Note: Use lean sausages to keep the meal low in unhealthy fats and suitable for weight loss goals.","i think the calories are underestimated, also a final note, again, the recipe is unusual but interesting",fail
+SYN11,French breakfast with chicken breast quick ideas,"# Chicken & Veggie Breakfast Wraps
+
+- Servings: 4
+- Prep Time: 10 minutes
+- Cook Time: 15 minutes
+
+## Ingredients (scaled)
+
+- 2 large chicken breasts (about 300g)
+- 4 whole wheat tortillas
+- 1 red bell pepper, sliced
+- 1 zucchini, sliced
+- 1 small onion, sliced
+- 2 tsp olive oil
+- 4 large eggs
+- Salt and pepper to taste
+- Fresh parsley for garnish (optional)
+
+## Preparation
+
+1. Season chicken breasts with salt and pepper. Cook in a skillet with 1 tsp olive oil over medium heat until cooked through (about 6-8 minutes per side). Let rest, then slice thinly.
+2. In the same skillet, add remaining olive oil and sauté onion, bell pepper, and zucchini until tender, about 5-7 minutes.
+3. Scramble eggs in a bowl, then cook in a non-stick pan until softly set.
+4. Warm tortillas briefly in a dry skillet or microwave.
+5. Assemble wraps: Divide cooked vegetables, sliced chicken, and scrambled eggs among tortillas. Roll tightly.
+6. Garnish with parsley if desired. Serve immediately.
+
+## Nutritional Information (per serving)
+
+- Calories: 430
+- Protein: 35g
+- Carbohydrates: 40g
+- Fat: 12g
+
+## Dietary Constraints Compliance
+
+- Father (Tom): No pork, low unhealthy fats — compliant
+- Mother (Sarah): Balanced meal — compliant
+- Daughter (Emma): Protein & veggie rich — compliant",a good and seemingly tasty recipe,pass
+SYN16,Vietnamese breakfast with tuna ready quickly,"# Vietnamese Tuna Breakfast Wraps
+
+- Servings: 4
+- Prep Time: 10 minutes
+- Cook Time: 5 minutes
+
+## Ingredients (scaled for 4 servings)
+
+- 2 cans (200g each) of tuna in water, drained
+- 4 small whole wheat rice paper wraps
+- 1 cucumber, thinly sliced
+- 1/2 cup shredded carrots
+- 1 small bunch fresh cilantro, chopped
+- 1 small red chili, thinly sliced (optional)
+- 2 tbsp fish sauce
+- 1 tbsp lime juice
+- 1 tsp honey
+- 1 tsp sesame oil
+- Lettuce leaves (for wrapping)
+- Salt and pepper to taste
+
+## Preparation
+
+1. In a bowl, mix tuna with fish sauce, lime juice, honey, sesame oil, salt, and pepper.
+2. Prepare a clean surface to assemble wraps. Dip a rice paper in warm water for about 10 seconds until soft.
+3. Lay the softened rice paper on the surface. Place lettuce leaf, some tuna mixture, cucumber, shredded carrots, cilantro, and chili (if using) near the center.
+4. Fold the sides and roll tightly to form a wrap. Repeat with remaining ingredients.
+5. Serve immediately with extra lime or fish sauce on the side.
+
+## Nutritional Information (per serving)
+
+- Calories: 220
+- Protein: 18g
+- Carbohydrates: 25g
+- Fat: 5g
+
+## Dietary Constraints Compliance
+
+- Father (Tom): Suitable, low unhealthy fats, no pork, high in protein
+- Mother (Sarah): Suitable, balanced flavors and nutrients
+- Daughter (Emma): Suitable, nutritious and easily digestible","overall very good result, but 5 min cook time and nothing is cooked.",fail
+SYN18,Italian dinner with eggs low prep quick recipes,"# Caprese Eggplant Parmesan
+
+- Servings: 4
+- Prep Time: 10 minutes
+- Cook Time: 20 minutes
+
+## Ingredients (scaled)
+
+- 2 medium eggplants, sliced into 1/2 inch rounds
+- 4 large eggs
+- 1 cup cherry tomatoes, halved
+- 1 cup fresh mozzarella, sliced
+- 1/4 cup fresh basil leaves
+- 2 tbsp olive oil
+- 1 tsp Italian seasoning
+- Salt and pepper to taste
+- Balsamic glaze (optional)
+
+## Preparation
+
+1. Preheat oven to 400°F (200°C). Line a baking sheet with parchment paper.
+2. Brush eggplant slices with 1 tbsp olive oil, season with salt, pepper, and Italian seasoning. Arrange on baking sheet.
+3. In a shallow dish, beat eggs. Dip eggplant slices into egg mixture, then place on the sheet.
+4. Bake for 15 minutes until golden.
+5. Meanwhile, in a skillet, warm remaining olive oil, sauté cherry tomatoes for 2-3 minutes.
+6. Once eggplants are baked, top each with a slice of mozzarella, cherry tomatoes, and basil.
+7. Optional: drizzle with balsamic glaze.
+8. Broil for 2-3 minutes until cheese melts. Serve warm.
+
+## Nutritional Information (per serving)
+
+- Calories: 330 kcal
+- Protein: 16g
+- Carbohydrates: 20g
+- Fat: 22g
+
+## Dietary Constraints Compliance
+
+- Father: No pork, low unhealthy fats — compliant
+- Mother: Balanced diet — compliant
+- Daughter: Healthy growth — suitable with protein and carbs
+
+---
+
+Would you like an alternative quick Italian egg dish?",question at the end,fail
+SYN1,What can I make for German breakfast with tuna in under an hour,"# Tuna and Whole Grain Rye Breakfast Open-Faced Sandwiches
+
+- Servings: 4
+- Prep Time: 10 minutes
+- Cook Time: 10 minutes
+
+## Ingredients (scaled to 4 servings)
+
+- 4 slices of whole grain rye bread
+- 1 can (160g) tuna in water, drained
+- ¼ cup Greek yogurt
+- 1 small red onion, finely chopped
+- 1 tbsp capers (optional)
+- 1 tbsp fresh dill, chopped
+- 1 tbsp lemon juice
+- Salt and pepper to taste
+- Cherry tomatoes and cucumber slices for serving
+
+## Preparation
+
+1. In a bowl, combine tuna, Greek yogurt, red onion, capers (if using), dill, lemon juice, salt, and pepper. Mix well until creamy.
+2. Toast the rye bread slices until golden brown.
+3. Spread the tuna mixture evenly over each slice of toast.
+4. Garnish with cherry tomatoes and cucumber slices on the side.
+5. Serve immediately for a fresh, nutritious breakfast.
+
+## Nutritional Information (per serving)
+
+- Calories: ~250 kcal
+- Protein: ~20g
+- Carbohydrates: ~30g
+- Fat: ~5g
+
+## Dietary Constraints Compliance
+
+- Father (Tom): High in protein, low unhealthy fats, no pork — compliant
+- Mother (Sarah): Balanced meal, low-fat Greek yogurt included — compliant
+- Daughter (Emma): Nutritious, quick, suitable for active day — compliant",very good result,pass
+SYN10,Tuna dinner ideas for Italian in less than an hour,"# Mediterranean Tuna Pasta
+
+- Servings: 4
+- Prep Time: 10 minutes
+- Cook Time: 20 minutes
+
+## Ingredients (scaled for 4 servings)
+- 300g whole wheat spaghetti
+- 2 cans (150g each) of tuna in olive oil, drained
+- 2 tbsp extra virgin olive oil
+- 3 cloves garlic, minced
+- 1 can (400g) diced tomatoes
+- 1 cup cooked spinach (fresh or frozen)
+- 1 tsp dried oregano
+- Salt and black pepper to taste
+- Fresh basil leaves for garnish
+- Grated Parmesan cheese (optional, for serving)
+
+## Preparation
+
+1. Cook the spaghetti in salted boiling water until al dente, about 8-10 minutes. Drain and set aside.
+2. In a large skillet, heat olive oil over medium heat. Add minced garlic and sauté until fragrant, about 1 minute.
+3. Add diced tomatoes and oregano. Cook for 5 minutes, stirring occasionally.
+4. Stir in tuna and cooked spinach. Cook for another 2-3 minutes to combine flavors.
+5. Mix the cooked pasta into the sauce. Season with salt and black pepper.
+6. Serve topped with fresh basil and optional Parmesan cheese.
+
+## Nutritional Information (per serving)
+- Calories: 450
+- Protein: 30g
+- Carbohydrates: 55g
+- Fat: 12g
+
+## Dietary Constraints Compliance
+- Father (Tom): Meets criteria, low unhealthy fats, no pork
+- Mother (Sarah): Suitable, balanced macros
+- Daughter (Emma): Nutritious and supports growth, balanced carbs and protein",good result,pass
+SYN7,French supper with tuna under an hour,"# Mediterranean Tuna Niçoise Salad
+
+- Servings: 4
+- Prep Time: 15 minutes
+- Cook Time: 20 minutes
+
+## Ingredients (scaled)
+
+- 4 cans (160 g each) of tuna in olive oil, drained
+- 200g green beans, trimmed
+- 200g small new potatoes or baby potatoes
+- 2 hard-boiled eggs, halved
+- 1 cup cherry tomatoes, halved
+- 1 small red onion, thinly sliced
+- 1/2 cup black olives
+- 2 tbsp olive oil
+- 1 tbsp red wine vinegar
+- 1 tsp Dijon mustard
+- Salt and pepper to taste
+- Fresh parsley for garnish
+
+## Preparation
+
+1. In a large pot, boil potatoes until tender (about 10-12 minutes). Drain, let cool slightly, then cut in half.
+2. In the same pot, blanch green beans in boiling water for 3-4 minutes until tender but crisp. Drain and set aside.
+3. In a small bowl, whisk together olive oil, red wine vinegar, Dijon mustard, salt, and pepper for the vinaigrette.
+4. In a large salad bowl, combine the potatoes, green beans, tuna, cherry tomatoes, onion, olives, and eggs.
+5. Drizzle with vinaigrettes and toss gently to combine.
+6. Garnish with chopped parsley before serving.
+
+## Nutritional Information (per serving)
+
+- Calories: 430
+- Protein: 30g
+- Carbohydrates: 30g
+- Fat: 20g
+
+## Dietary Constraints Compliance
+
+- Father (Tom): Meets low-fat, high-protein, no pork constraints.
+- Mother (Sarah): Well-balanced; suitable.
+- Daughter (Emma): Supports growth with balanced macros and nutrient density.",good result,pass
+SYN15,Low prep French supper with chicken breast suggestions,"# Herb Chicken Breast with Ratatouille
+
+- Servings: 4
+- Prep Time: 10 minutes
+- Cook Time: 30 minutes
+
+## Ingredients (scaled)
+
+- 4 boneless, skinless chicken breasts (about 150g each)
+- 1 tbsp olive oil
+- 1 tsp dried thyme
+- 1 tsp dried rosemary
+- 2 garlic cloves, minced
+- Salt and pepper to taste
+- 1 eggplant, diced
+- 1 zucchini, diced
+- 1 red bell pepper, chopped
+- 1 yellow bell pepper, chopped
+- 1 onion, sliced
+- 2 tomatoes, chopped
+- 1 tbsp olive oil
+- 1 tsp dried oregano
+- Fresh basil for garnish (optional)
+
+## Preparation
+
+1. Rub chicken breasts with olive oil, thyme, rosemary, garlic, salt, and pepper. Set aside.
+2. In a large skillet, heat 1 tablespoon olive oil over medium heat. Cook chicken breasts for about 6-7 minutes per side until golden and cooked through. Remove and keep warm.
+3. In the same skillet or a separate pot, heat 1 tablespoon olive oil. Sauté onion, eggplant, zucchini, and bell peppers until tender, about 10 minutes.
+4. Add chopped tomatoes and oregano to the vegetables. Simmer for another 10 minutes until flavors meld.
+5. Serve chicken breasts alongside the ratatouille, garnished with fresh basil if desired.
+
+## Nutritional Information (per serving)
+
+- Calories: 350
+- Protein: 40g
+- Carbohydrates: 20g
+- Fat: 10g
+
+## Dietary Constraints Compliance
+
+- Father (Tom): No pork, low unhealthy fats, high protein, moderate carbs—all met.
+- Mother (Sarah): Balanced meal—met.
+- Daughter (Emma): Nutritious, supports growth—met.
+
+Enjoy this simple, flavorful French-inspired low-prep dinner!",final note,fail
+SYN20,Vietnamese breakfast with egg in 20 minutes,"# Vietnamese Egg & Vegetable Pho
+
+- Servings: 4
+- Prep Time: 10 minutes
+- Cook Time: 10 minutes
+
+## Ingredients (scaled for 4 servings)
+
+- 8 cups chicken or vegetable broth
+- 4 large eggs
+- 200g rice noodles (vermicelli)
+- 1 cup bean sprouts
+- 1 small onion, thinly sliced
+- 2 cloves garlic, minced
+- 1 carrot, julienned
+- 2 green onions, chopped
+- 1 tablespoon fish sauce (or soy sauce for lower sodium)
+- 1 teaspoon sesame oil
+- Fresh herbs: cilantro, mint (optional)
+- Lime wedges (for serving)
+- Chili slices (optional, for spices)
+
+## Preparation
+
+1. Bring the broth to a boil in a large pot. Add minced garlic, sliced onion, and fish sauce; simmer for 5 minutes to develop flavor.
+2. While broth simmers, cook rice noodles according to package instructions (about 4-5 minutes). Drain and set aside.
+3. In a separate non-stick pan, heat sesame oil over medium heat. Crack eggs into the pan and cook sunny-side-up or gently scramble, until the whites are set.
+4. Divide cooked noodles into bowls. Ladle hot broth over noodles.
+5. Top each bowl with an egg, bean sprouts, julienned carrots, green onions, and herbs.
+6. Serve with lime wedges and chili slices if desired.
+
+## Nutritional Information (per serving)
+
+- Calories: 440
+- Protein: 20g
+- Carbohydrates: 55g
+- Fat: 12g
+
+## Dietary Constraints Compliance
+
+- Father (Tom): No pork, low unhealthy fats — compliant
+- Mother (Sarah): Balanced, moderate fats — compliant
+- Daughter (Emma): Supports healthy growth, high in nutrients — compliant",good,pass
+SYN8,What to cook Vietnamese dinner with salmon in 20 min,"# Vietnamese Salmon Noodle Bowl
+
+- Servings: 4
+- Prep Time: 10 minutes
+- Cook Time: 10 minutes
+
+## Ingredients (scaled)
+
+- 4 salmon fillets (about 150g each)
+- 200g rice noodles
+- 1 cup shredded carrots
+- 1 cup cucumber, thinly sliced
+- 1/2 cup fresh cilantro, chopped
+- 1/4 cup green onions, sliced
+- 2 tablespoons lime juice
+- 2 tablespoons fish sauce (or soy sauce for less sodium)
+- 1 teaspoon honey
+- 1 teaspoon sesame oil
+- 1 tablespoon vegetable oil
+- Optional: chopped chili peppers for spice
+
+## Preparation
+
+1. Cook rice noodles according to package instructions, drain and set aside.
+2. Heat vegetable oil in a skillet over medium-high heat. Season salmon fillets with a little salt and pepper, then cook for about 3-4 minutes per side until cooked through. Remove and set aside.
+3. In a small bowl, mix lime juice, fish sauce, honey, and sesame oil to make the dressing.
+4. Flake the cooked salmon into large chunks.
+5. Divide noodles into bowls; top with flaked salmon, shredded carrots, cucumber slices, cilantro, and green onions.
+6. Drizzle with the dressing and add chili peppers if desired.
+
+## Nutritional Information (per serving)
+
+- Calories: 430
+- Protein: 29g
+- Carbohydrates: 50g
+- Fat: 10g
+
+## Dietary Constraints Compliance
+
+- Father (Tom): Salmon is suitable; low unhealthy fats; includes fish protein.
+- Mother (Sarah): Suitable; balanced ingredients.
+- Daughter (Emma): Suitable; nutritious and appealing.
+
+Enjoy your quick, healthy Vietnamese salmon noodle bowl!","very interesting recipe, only the final note, again",fail
+SYN3,Low prep French dinner chicken breast suggestions,"# Herb-Stuffed Chicken Breast with Ratatouille
+
+- Servings: 4
+- Prep Time: 15 minutes
+- Cook Time: 30 minutes
+
+## Ingredients (scaled)
+
+- 4 boneless, skinless chicken breasts (~150g each)
+- 2 tbsp olive oil
+- 2 cloves garlic, minced
+- 1 tsp dried thyme
+- 1 tsp dried rosemary
+- 1 cup cherry tomatoes, halved
+- 1 zucchini, sliced
+- 1 eggplant, diced
+- 1 bell pepper, sliced
+- 1 onion, sliced
+- 1 tbsp olive oil (for vegetables)
+- Salt and pepper to taste
+- Fresh parsley for garnish
+
+## Preparation
+
+1. Preheat oven to 200°C (390°F).
+2. Slice a pocket in each chicken breast and stuff with a sprig of rosemary and a little minced garlic.
+3. Rub the chicken breasts with 1 tbsp olive oil, thyme, salt, and pepper.
+4. Heat a skillet over medium heat, sear chicken for 3-4 minutes per side until golden.
+5. Transfer chicken to baking dish and bake for 20 minutes until cooked through.
+6. Meanwhile, in a large pan, heat 1 tbsp olive oil. Sauté onion and garlic until fragrant.
+7. Add eggplant, zucchini, and bell pepper, cook until tender, about 10 minutes.
+8. Stir in cherry tomatoes, cook for another 5 minutes until slightly softened.
+9. Serve the stuffed chicken breasts alongside the ratatouille, garnished with parsley.
+
+## Nutritional Information (per serving)
+
+- Calories: 430
+- Protein: 45g
+- Carbohydrates: 25g
+- Fat: 15g
+
+## Dietary Constraints Compliance
+
+- Father (Tom): Suitable, low unhealthy fats, moderate carbs, high protein
+- Mother (Sarah): Suitable, balanced nutrients
+- Daughter (Emma): Suitable, nutritious and tasty",,pass
+SYN4,Vietnamese breakfast with salmon ready in less than an hour,"# Salmon Bánh Mì Breakfast Bowl
+
+- Servings: 4
+- Prep Time: 15 minutes
+- Cook Time: 20 minutes
+
+## Ingredients (scaled)
+
+- 4 oz (113 g) fresh salmon fillet per serving
+- 1 cup cooked jasmine rice or rice noodles
+- 1 small cucumber, sliced
+- 1 small carrot, julienned
+- 2 radishes, sliced
+- 4 boiled eggs
+- 1/4 cup chopped fresh cilantro
+- 2 tbsp soy sauce (low sodium)
+- 1 tbsp rice vinegar
+- 1 tsp honey
+- 1 tsp sesame oil
+- 1 tbsp olive oil
+- Salt and pepper to taste
+- Optional: sliced jalapeños or chili sauce for heat
+
+## Preparation
+
+1. **Prepare the salmon:** Season salmon fillets with a pinch of salt, pepper, and a teaspoon of olive oil. Grill or pan-sear over medium heat for about 4-5 minutes per side until cooked through. Flake into large pieces.
+2. **Prepare the marinade:** Mix soy sauce, rice vinegar, honey, sesame oil, and a pinch of salt in a small bowl. Drizzle over cooked salmon and let sit for 5 minutes.
+3. **Assemble bowls:** Divide rice or noodles into four bowls. Top with flaked salmon, cucumber slices, julienned carrots, radishes, and boiled eggs (halved).
+4. **Garnish:** Sprinkle with chopped cilantro and optional chili slices for added heat.
+5. **Serve:** Enjoy immediately as a nutritious and flavorful breakfast.
+
+## Nutritional Information (per serving)
+
+- Calories: 470
+- Protein: 30g
+- Carbohydrates: 45g
+- Fat: 15g
+
+## Dietary Constraints Compliance
+
+- Father (Tom): Meets low unhealthy fats, high protein, and limited red meat.
+- Mother (Sarah): Balanced meal with moderate carbs and fats.
+- Daughter (Emma): Provides healthy carbs, protein, and growth nutrients.
+
+This breakfast is quick, balanced, and perfect for a nutritious start to the day!","dont like the bold words in prep and the final note. good recipe, though",fail
+SYN2,Quick Italian supper with eggs any ideas,"# Italian Egg Frittata with Vegetables
+
+- Servings: 4
+- Prep Time: 10 minutes
+- Cook Time: 20 minutes
+
+## Ingredients (scaled)
+
+- 8 large eggs
+- 1 cup cherry tomatoes, halved
+- 1 cup spinach, fresh
+- 1/2 cup red bell pepper, diced
+- 1/4 cup onion, finely chopped
+- 2 tablespoons olive oil
+- 1/4 cup grated Parmesan cheese
+- Salt and pepper to taste
+- Fresh basil for garnish (optional)
+
+## Preparation
+
+1. Preheat oven to 180°C (350°F).
+2. In a large bowl, whisk the eggs with salt, pepper, and Parmesan cheese.
+3. In an ovenproof skillet, heat olive oil over medium heat. Sauté onion and red bell pepper until soft, about 5 minutes.
+4. Add cherry tomatoes and spinach; cook until spinach wilts, about 2 minutes.
+5. Pour the egg mixture into the skillet, spreading evenly.
+6. Cook on stovetop until eggs are mostly set, about 2-3 minutes.
+7. Transfer skillet to the oven and bake for 15 minutes until fully cooked and golden on top.
+8. Garnish with fresh basil if desired. Slice and serve warm.
+
+## Nutritional Information (per serving)
+
+- Calories: 210 kcal
+- Protein: 12g
+- Carbohydrates: 10g
+- Fat: 14g
+
+## Dietary Constraints Compliance
+
+- Father (Tom): No pork, low unhealthy fats – compliant
+- Mother (Sarah): Balanced meal – compliant
+- Daughter (Emma): Nutritious and suitable for active growth – compliant",,pass

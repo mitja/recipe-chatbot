@@ -1,0 +1,32 @@
+<svg width="150" height="150" viewBox="0 0 150 150" xmlns="http://www.w3.org/2000/svg">
+    <!-- Top row: I O P -->
+    <rect x="42" y="10" width="25" height="25" rx="3" fill="none" stroke="#888" stroke-width="1"/>
+    <text x="54.5" y="27" text-anchor="middle" font-family="monospace" font-size="12" fill="#888">I</text>
+    <text x="54.5" y="45" text-anchor="middle" font-family="monospace" font-size="8" fill="#666">Fail</text>
+    
+    <rect x="77" y="10" width="25" height="25" rx="3" fill="none" stroke="#888" stroke-width="1"/>
+    <text x="89.5" y="27" text-anchor="middle" font-family="monospace" font-size="12" fill="#888">O</text>
+    <text x="89.5" y="45" text-anchor="middle" font-family="monospace" font-size="8" fill="#666">Overview</text>
+    
+    <rect x="112" y="10" width="25" height="25" rx="3" fill="none" stroke="#888" stroke-width="1"/>
+    <text x="124.5" y="27" text-anchor="middle" font-family="monospace" font-size="12" fill="#888">P</text>
+    <text x="124.5" y="45" text-anchor="middle" font-family="monospace" font-size="8" fill="#666">Theme</text>
+    
+    <!-- Middle row: J K L -->
+    <rect x="20" y="55" width="25" height="25" rx="3" fill="none" stroke="#888" stroke-width="1"/>
+    <text x="32.5" y="72" text-anchor="middle" font-family="monospace" font-size="12" fill="#888">J</text>
+    <text x="32.5" y="90" text-anchor="middle" font-family="monospace" font-size="8" fill="#666">Prev</text>
+    
+    <rect x="55" y="55" width="25" height="25" rx="3" fill="none" stroke="#888" stroke-width="1"/>
+    <text x="67.5" y="72" text-anchor="middle" font-family="monospace" font-size="12" fill="#888">K</text>
+    <text x="67.5" y="90" text-anchor="middle" font-family="monospace" font-size="8" fill="#666">Pass</text>
+    
+    <rect x="90" y="55" width="25" height="25" rx="3" fill="none" stroke="#888" stroke-width="1"/>
+    <text x="102.5" y="72" text-anchor="middle" font-family="monospace" font-size="12" fill="#888">L</text>
+    <text x="102.5" y="90" text-anchor="middle" font-family="monospace" font-size="8" fill="#666">Next</text>
+
+    <!-- Bottom row: M -->
+    <rect x="37.5" y="100" width="25" height="25" rx="3" fill="none" stroke="#888" stroke-width="1"/>
+    <text x="50" y="117" text-anchor="middle" font-family="monospace" font-size="12" fill="#888">M</text>
+    <text x="50" y="135" text-anchor="middle" font-family="monospace" font-size="8" fill="#666">Clear</text>
+</svg>

@@ -1,0 +1,21 @@
+tuple_id,cuisine_type,meal_type,available_food,preparation_time
+1,German,breakfast,tuna,less than 1h
+2,Italian,supper,eggs,20 min
+3,French,dinner,chicken breast,low prep time
+4,Vietnamese,breakfast,salmon,less than 1h
+5,German,dinner,eggs,20 min
+6,Italian,breakfast,chicken breast,low prep time
+7,French,supper,tuna,less than 1h
+8,Vietnamese,dinner,salmon,20 min
+9,German,supper,eggs,low prep time
+10,Italian,dinner,tuna,less than 1h
+11,French,breakfast, chicken breast,20 min
+12,Vietnamese,supper,eggs,low prep time
+13,German,dinner,salmon,less than 1h
+14,Italian,breakfast,eggs,20 min
+15,French,supper,chicken breast,low prep time
+16,Vietnamese,breakfast,tuna,less than 1h
+17,German,supper,salmon,20 min
+18,Italian,dinner,eggs,low prep time
+19,French,breakfast,tuna,less than 1h
+20,Vietnamese,breakfast,egg,20 min

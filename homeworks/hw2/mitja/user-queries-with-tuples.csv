@@ -1,0 +1,21 @@
+query_id,tuple_id,user_query,cuisine_type,meal_type,available_food,preparation_time
+1,1,What can I make for German breakfast with tuna in under an hour,German,breakfast,tuna,less than 1h
+2,2,Quick Italian supper with eggs any ideas,Italian,supper,eggs,20 min
+3,3,Low prep French dinner chicken breast suggestions,French,dinner,chicken breast,low prep time
+4,4,Vietnamese breakfast with salmon ready in less than an hour,Vietnamese,breakfast,salmon,less than 1h
+5,5,Easy German dinner with eggs in 20 minutes,German,dinner,eggs,20 min
+6,6,Italian breakfast with chicken breast quick recipes,Italian,breakfast,chicken breast,low prep time
+7,7,French supper with tuna under an hour,French,supper,tuna,less than 1h
+8,8,What to cook Vietnamese dinner with salmon in 20 min,Vietnamese,dinner,salmon,20 min
+9,9,German supper with eggs fast options,German,supper,eggs,low prep time
+10,10,Tuna dinner ideas for Italian in less than an hour,Italian,dinner,tuna,less than 1h
+11,11,French breakfast with chicken breast quick ideas,French,breakfast, chicken breast,20 min
+12,12,Vietnamese supper with eggs low prep time,Vietnamese,supper,eggs,low prep time
+13,13,What can I cook German dinner with salmon fast,German,dinner,salmon,less than 1h
+14,14,Italian breakfast with eggs quick and easy,Italian,breakfast,eggs,20 min
+15,15,Low prep French supper with chicken breast suggestions,French,supper,chicken breast,low prep time
+16,16,Vietnamese breakfast with tuna ready quickly,Vietnamese,breakfast,tuna,less than 1h
+17,17,What to make German supper with salmon in 20 min,German,supper,salmon,20 min
+18,18,Italian dinner with eggs low prep quick recipes,Italian,dinner,eggs,low prep time
+19,19,Quick French breakfast with tuna ideas,French,breakfast,tuna,less than 1h
+20,20,Vietnamese breakfast with egg in 20 minutes,Vietnamese,breakfast,egg,20 min

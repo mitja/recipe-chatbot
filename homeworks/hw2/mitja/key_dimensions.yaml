@@ -1,0 +1,4 @@
+- cuisine_type: [German, Italian, French, Vietnamese]
+- meal_type: [breakfast, supper, dinner]
+- preparation_time: [less than 1h, 20 min, low prep time]
+- available_food: [tuna, salmon, eggs, chicken breast]
